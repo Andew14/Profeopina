@@ -1,0 +1,66 @@
+h1 {
+    margin-left: 30px;
+    
+}
+.profesor-link {
+    text-decoration: none; /* Quita la subrayado del enlace */
+    color: black; /* Cambia el color del texto */
+}
+.search-input {
+    padding: 10px;
+    width: 40%; /* Ajusta el ancho según lo necesites */
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(53, 53, 100, 0.7); /* Color sombreado convertido a RGBA */
+    transition: box-shadow 0.3s;
+    font-size: 18px; /* Cambia el tamaño del texto */
+    height: 30px;
+}
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(53, 53, 100, 1); /* Cambia el sombreado al enfocar el input */
+}
+h2 {
+    margin-left: 30px;
+}
+.resultados{
+    margin-right: 65%;
+    margin-left: 30px;
+}
+.search-container {
+    margin-left: 30px;
+    
+}
+.profesor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 30px;
+    background-color: #e0e3e7;
+    padding: 15px;
+    border-radius: 8px;
+    
+}
+
+.profesor img {
+    width: 100px;
+    height: auto;
+    
+}
+
+.profesor-info {
+    flex: 1;
+    padding: 5%;
+}
+
+.profesor-nombre {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.profesor-detalles {
+    font-size: 14px;
+}
+

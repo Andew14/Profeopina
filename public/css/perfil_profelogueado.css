@@ -1,0 +1,336 @@
+/* Estilos para el contenedor principal */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    
+    justify-content: center;
+    align-items: center;
+}
+@media( width < 900px){
+    .container{
+        background-color: #F1F4F8 ;
+    }
+    .profesor-perfil {
+        background-color: #ffffff; 
+        border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+}
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    
+}
+
+
+.profesor-perfil {
+    max-width: 800px; /* Establece el ancho máximo */
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px; /* Separación superior */
+    overflow: hidden; /* Para evitar desbordamientos */
+    background-color: #ffffff; ;
+    
+}
+.btn-guardar {
+    position: absolute;
+    top: 110px; /* Ajusta la posición según tu navbar */
+    right: 50px; /* Ajusta la posición según tu layout */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Primera Parte */
+.profesor-info {
+    margin-bottom: 20px;
+}
+
+.profesor-foto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d9bc27;
+    margin-bottom: 10px;
+}
+
+.profesor-nombre {
+    font-size: 24px;
+    color: #333333;
+    margin: 10px 0;
+}
+
+.profesor-ciudad,
+.profesor-colegio {
+    font-size: 16px;
+    color: #666666;
+    margin: 5px 0;
+}
+
+/* Segunda Parte */
+.etiquetas-destacadas {
+    margin-top: 20px;
+}
+
+.etiquetas-destacadas h2 {
+    font-size: 20px;
+    color: #353564;
+    margin-bottom: 15px;
+}
+
+.etiquetas {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.etiqueta {
+    background-color: #d9bc27;
+    color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: default;
+}
+
+
+/* Tercera Parte: Según los reviews */
+.segun-reviews {
+    background-color: #e0e3e7;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 96%;
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+.segun-reviews h2 {
+    font-size: 18px;
+    color: #353564;
+    margin-bottom: 10px;
+    
+}
+
+.segun-reviews ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.segun-reviews li {
+    font-size: 16px;
+    color: #333333;
+    margin: 5px 0;
+}
+
+.segun-reviews .azul {
+    color: #353564;
+    font-weight: bold;
+}
+/* Cuarta Parte: Botones */
+.botones {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.botones a {
+    text-decoration: none !important;
+}
+.boton {
+    background-color: #d9bc27;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px  80px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+/* Centrar el contenedor de las reseñas */
+.lista-resenias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilo para el contenedor de reseñas */
+.resenia {
+    background-color: #e0f2f1; /* Color de fondo azul suave */
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 80%; /* Puedes ajustar el ancho como prefieras */
+    max-width: 600px; /* Ancho máximo opcional */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinear contenido a la izquierda */
+}
+
+.resenia-calificacion {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 1.5em; /* Tamaño del número de la calificación */
+    display: flex;
+    align-items: center;
+}
+
+.resenia-texto {
+    margin-left: 10px; /* Espaciado a la izquierda */
+}
+.resenia-calificacion{
+    color: #1565c0;
+    margin-left: 10px;
+}
+.estrella {
+    width: 20px; /* Tamaño de la estrella */
+    height: 20px; /* Asegura que la estrella tenga altura consistente */
+    margin-left: 5px; /* Espacio entre el número y la estrella */
+}
+
+.boton:hover {
+    background-color: #c7ab22;
+}
+/* Quinta Parte: Enlace */
+.enlace-profesor {
+    margin-top: 20px;
+}
+
+.enlace-texto {
+    color: #d9bc27;
+    text-decoration: none ;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.enlace-texto:hover {
+    text-decoration: underline;
+}
+
+
+/* Estilos para el botón "Add Review" */
+/* Estilos para el botón "Add Review" */
+.btn-primary {
+    background-color: #d9bc27 !important; /* Color amarillo */
+    border: none !important;
+    color: white !important;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+    transition-duration: 0.4s;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
+    background-color: #b7961e !important; /* Amarillo más oscuro para el hover, focus, active */
+    border: none !important;
+    color: white !important;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    animation: fadeIn 0.3s;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); }
+    to { transform: translateY(0); }
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal h2 {
+    margin-top: 0;
+    color: #353564;
+}
+
+.modal form {
+    display: flex;
+    flex-direction: column;
+}
+
+.modal form div {
+    margin-bottom: 15px;
+}
+
+.modal form label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.modal form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: calc(100% - 22px);
+}
+
+.modal form button {
+    padding: 10px;
+    background-color: #353564;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.modal form button:hover {
+    background-color: #2b2b58;
+}

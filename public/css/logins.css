@@ -1,0 +1,80 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Usamos min-height en lugar de height */
+}
+
+body {
+    background-color: #F1F4F8;
+}
+
+.login-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%; /* Ajustamos el ancho */
+    max-width: 500px; /* Limitamos el ancho máximo */
+}
+
+.login-container h2 {
+    padding-top: 5%;
+    padding-bottom: 2%;
+    margin-bottom: 20px;
+    text-align: left;
+    font-size: 15px;
+    color: #808080;
+}
+
+.inputs {
+    margin-bottom: 20px; /* Ajustamos el espacio entre los campos */
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group input {
+    width: calc(100% - 20px); /* Usamos calc para restar el padding */
+    height: 40px; /* Ajustamos la altura */
+    padding: 10px;
+    border: 1px solid #353564;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #353564;
+    border-width: 2.5px;
+    outline: none;
+}
+
+.btn-continue {
+    width: 100%;
+    padding: 10px;
+    background-color: #d9bc27;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-continue:hover {
+    background-color: #b59e1f;
+}
+
+.forgot-password {
+    display: block;
+    margin-top: 10px;
+    color: #d9bc27;
+    text-decoration: none
+}

@@ -1,0 +1,36 @@
+/* public/css/configcuenta.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    
+}
+
+
+
+.editar {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px; /* Espacio entre el icono y el texto */
+    padding: 8px 12px;
+    color: #ffcc00; /* Reemplaza esto con tu tono de amarillo específico */
+    font-weight: bold;
+    text-decoration: none; /* Quita el subrayado */
+    border: 2px solid #ffcc00; /* Borde del color del botón */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s, color 0.3s; /* Transición para el hover */
+}
+
+.editar:hover {
+    background-color: #ffcc00; /* Fondo amarillo en hover */
+    color: #fff; /* Texto blanco en hover */
+}
+
+.editar .fa-pencil-alt {
+    font-size: 1em;
+}
+
+/* Añade un espacio de separación entre los párrafos */
+p {
+    margin: 10px 0;
+}

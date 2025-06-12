@@ -1,0 +1,30 @@
+/* public/css/tuperfil.css */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    
+}
+
+.profile-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    background-color: #f8f9fa; /* Color de fondo opcional para visibilidad */
+    text-align: center; /* Alinea el texto al centro */
+    padding-top: 70px; /* Ajusta el espacio superior si es necesario */
+}
+
+.container {
+    width: 100%; /* Ancho total del contenedor */
+    max-width: 600px; /* Ajusta el ancho máximo del contenedor */
+    background-color: white; 
+    padding: 20px; /* Espaciado interno opcional */
+    border-radius: 8px; /* Esquinas redondeadas opcionales */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra opcional */
+}
+
+.profile-details p {
+    text-align: left; /* Alinea el texto de los detalles a la izquierda */
+    margin: 10px 0; /* Espaciado vertical entre los elementos */
+}

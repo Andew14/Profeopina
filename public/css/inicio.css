@@ -1,0 +1,52 @@
+.centered-images {
+    text-align: center;
+    margin-top: 20px;
+    
+    
+}
+
+.centered-images img {
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+    height: auto;
+}
+.centered-images .icon img{
+    margin-top: 2%;
+    width: 9%;
+    height: auto;
+}
+.search-section {
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.search-section input[type="text"] {
+    padding: 10px;
+    width: 1000px; /* Ajusta el ancho según lo necesites */
+    border: none;
+    border-radius: 5px;
+    background-color: #f0faff;
+    box-shadow: 0 0 10px rgba(53, 53, 100, 0.7); /* Color sombreado convertido a RGBA */
+    transition: box-shadow 0.3s;
+    font-size: 18px; /* Cambia el tamaño del texto */
+    height: 30px;
+    
+}
+
+.search-section input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(53, 53, 100, 1); /* Cambia el sombreado al enfocar el input */
+}
+.search-input {
+    padding: 10px 10px 10px 40px; /* Ajusta el espacio para el icono */
+    width: 400px; /* Ajusta el ancho según lo necesites */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(53, 53, 100, 0.3); /* Color sombreado */
+   
+    transition: box-shadow 0.3s;
+    font-size: 16px; /* Ajusta el tamaño del texto */
+}
