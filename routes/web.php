@@ -11,16 +11,6 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\ProfesorLogController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\VentaController;
-
-Route::get('/ventas', [VentaController::class, 'index'])->name('ventas.index');      // Mostrar listado de ventas
-Route::get('/ventas/create', [VentaController::class, 'create'])->name('ventas.create');  // Mostrar formulario de creación
-Route::post('/ventas', [VentaController::class, 'store'])->name('ventas.store');     // Guardar nueva venta
-Route::get('/ventas/{venta}', [VentaController::class, 'show'])->name('ventas.show');   // Mostrar detalles de una venta
-Route::get('/ventas/{venta}/edit', [VentaController::class, 'edit'])->name('ventas.edit'); // Mostrar formulario de edición
-Route::put('/ventas/{venta}', [VentaController::class, 'update'])->name('ventas.update');  // Actualizar una venta existente
-Route::delete('/ventas/{venta}', [VentaController::class, 'destroy'])->name('ventas.destroy'); // Eliminar una venta
-
 
 
 
