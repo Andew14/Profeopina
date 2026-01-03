@@ -1,90 +1,148 @@
+/* Page layout for student profile */
+body {
+    background-color: #f6f7fb;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+.profile-container {
+    padding: 2.5rem 1rem;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(53,53,100,0.08);
+}
+
+.display-4 {
+    font-size: 2.2rem;
+    color: #353564; /* navy used in header */
+    margin: 0 0 0.25rem 0;
+}
+
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 0.8rem;
+}
+
+.profile-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eef1f6;
+}
+
+.profile-label {
+    font-weight: 700;
+    color: #353564;
+    width: 160px;
+    flex-shrink: 0;
+}
+
+.profile-value {
+    color: #222;
+    flex: 1;
+}
+
+.editar {
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    background: transparent;
+    border: 2px solid #ffd24d; /* yellow accent */
+    color: #353564;
+    padding: 0.35rem 0.6rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    margin: 1rem auto 0;
+    font-size: 0.95rem;
+    min-width: 120px;
+    transition: background-color .15s, transform .08s;
+}
+
+.editar:hover { background-color: rgba(255,210,77,0.06); transform: translateY(-1px); }
+
+.editar i {
+    color: #ffd24d;
+    font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+    .editar {
+        width: 100%;
+        max-width: 260px;
+        padding: 0.55rem 0.8rem;
+        font-size: 0.98rem;
+        min-width: unset;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container { padding: 1rem; }
+    .display-4 { font-size: 1.6rem; }
+    .profile-label { width: 120px; font-size: 0.95rem; }
+}
+
+/* Modal styles (existing) */
 .modal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
     animation: fadeIn 0.3s;
 }
 
 .modal-content {
     background-color: #fefefe;
-    margin: 10% auto;
+    margin: 6% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
+    border: 1px solid #e0e0e0;
+    width: 90%;
+    max-width: 520px;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
     animation: slideIn 0.3s;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideIn { from { transform: translateY(-30px); } to { transform: translateY(0); } }
 
-@keyframes slideIn {
-    from { transform: translateY(-50px); }
-    to { transform: translateY(0); }
-}
+.close { color: #aaa; float: right; font-size: 28px; font-weight: bold; }
+.close:hover, .close:focus { color: black; text-decoration: none; cursor: pointer; }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal h2 {
-    margin-top: 0;
-    color: #353564;
-}
-
-.modal form {
-    display: flex;
-    flex-direction: column;
-}
-
-.modal form div {
-    margin-bottom: 15px;
-}
-
-.modal form label {
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
+.modal h2 { margin-top: 0; color: #353564; }
+.modal form { display: flex; flex-direction: column; }
+.modal form div { margin-bottom: 12px; }
+.modal form label { margin-bottom: 5px; font-weight: 700; color: #353564; }
 .modal form input {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    width: calc(100% - 22px);
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 100%;
 }
-
 .modal form button {
     padding: 10px;
     background-color: #353564;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
 }
-
-.modal form button:hover {
-    background-color: #2b2b58;
-}
+.modal form button:hover { background-color: #2b2b58; }
