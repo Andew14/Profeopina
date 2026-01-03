@@ -54,6 +54,19 @@ Route::get('/buscar_profesor', [ProfesorController::class, 'buscar'])->name('bus
 Route::get('/perfil_profesor/{id}', [ProfesorController::class, 'mostrarPerfil'])->name('perfil.profesor');
 Route::get('/listaresenia', [ReseniaController::class, 'index'])->name('listaresenia');
 
+// Compatibility routes for email verification (feature disabled) — redirect to login instead of 404
+Route::get('/email/verify', function () {
+    return redirect()->route('login')->with('info', 'Email verification is disabled.');
+})->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function () {
+    return redirect()->route('login')->with('info', 'Email verification is disabled.');
+})->name('verification.verify');
+
+Route::post('/email/verification-notification', function () {
+    return redirect()->back()->with('info', 'Email verification is disabled.');
+})->name('verification.send');
+
 // Ruta para el cambio de idioma
 Route::get('locale/{locale}', function ($locale) {
     session(['locale' => $locale]);
