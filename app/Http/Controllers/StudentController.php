@@ -15,17 +15,18 @@ class StudentController extends Controller
     }
 
     public function login(Request $request)
-{
-    $credentials = $request->only('email', 'password');
+    {
+        $credentials = $request->only('email', 'password');
 
-    if (Auth::guard('student')->attempt($credentials)) {
-        return redirect()->route('iniciologueado');
+        if (Auth::guard('student')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('iniciologueado'));
+        }
+
+        return redirect()->back()->withErrors([
+            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+        ])->withInput($request->only('email'));
     }
-
-    return redirect()->back()->withErrors([
-        'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
-    ])->withInput($request->only('email'));
-}
 
 
     public function create()
@@ -48,8 +49,9 @@ class StudentController extends Controller
         ]);
 
         Auth::guard('student')->login($student);
+        $request->session()->regenerate();
 
-        return redirect()->route('login.student');
+        return redirect()->route('iniciologueado');
     }
     public function showProfile()
     {
