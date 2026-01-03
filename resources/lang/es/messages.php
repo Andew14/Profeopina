@@ -90,5 +90,7 @@ return [
     'review' => 'Escriba su reseña',
     'edit_profile' => 'Editar Perfil',
     'meta_description' => 'Bienvenido a Profeopina, el mejor lugar para revisar y encontrar profesores.',
+    'search_error' => 'No se pudo completar la búsqueda en este momento. Por favor, inténtelo de nuevo más tarde.',
+    'review_added' => 'Reseña agregada correctamente.',
 ];
 

@@ -90,5 +90,7 @@ return [
     'edit_profile' => 'Edit Profile',
     
     'meta_description' => 'Welcome to Profeopina, the best place to review and find teachers.',
+    'search_error' => 'Search could not be completed at this time. Please try again later.',
+    'review_added' => 'Review added successfully.',
 ];
 
