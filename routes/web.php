@@ -56,11 +56,17 @@ Route::get('locale/{locale}', function ($locale) {
     return redirect()->back();
 })->name('locale.change');
 
+// Only allow language routes for specific locales to avoid capturing other paths
 Route::get('/{lang}', function ($lang) {
+    $allowed = ['en', 'es'];
+    if (! in_array($lang, $allowed)) {
+        return redirect()->route('inicio');
+    }
+
     App::setLocale($lang);
     session(['locale' => $lang]);
     return redirect()->back();
-});
+})->where('lang', 'en|es');
 
 Route::middleware('auth:student')->group(function () {
     Route::get('/iniciologueado', function () {
