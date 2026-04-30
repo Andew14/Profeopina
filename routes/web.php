@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\TestMail;
-
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\ReseniaController;
 use App\Http\Controllers\ProfesorController;
@@ -36,6 +33,11 @@ Route::get('/perfil', function () {
 Route::get('/login_student', [StudentController::class, 'showLoginForm'])->name('login.student');
 Route::post('/login_student', [StudentController::class, 'login'])->name('login.student.post');
 
+// Admin login routes (separate form for admins/users)
+Route::get('/login_admin', [\App\Http\Controllers\AdminAuthController::class, 'showLoginForm'])->name('login.admin');
+Route::post('/login_admin', [\App\Http\Controllers\AdminAuthController::class, 'login'])->name('login.admin.post');
+Route::post('/logout_admin', [\App\Http\Controllers\AdminAuthController::class, 'logout'])->name('logout.admin');
+
 // Compatibility route for Laravel's auth middleware that expects route('login')
 // Render the student login form directly so tests expecting 200 succeed
 Route::get('/login', [StudentController::class, 'showLoginForm'])->name('login');
@@ -54,18 +56,7 @@ Route::get('/buscar_profesor', [ProfesorController::class, 'buscar'])->name('bus
 Route::get('/perfil_profesor/{id}', [ProfesorController::class, 'mostrarPerfil'])->name('perfil.profesor');
 Route::get('/listaresenia', [ReseniaController::class, 'index'])->name('listaresenia');
 
-// Compatibility routes for email verification (feature disabled) — redirect to login instead of 404
-Route::get('/email/verify', function () {
-    return redirect()->route('login')->with('info', 'Email verification is disabled.');
-})->name('verification.notice');
 
-Route::get('/email/verify/{id}/{hash}', function () {
-    return redirect()->route('login')->with('info', 'Email verification is disabled.');
-})->name('verification.verify');
-
-Route::post('/email/verification-notification', function () {
-    return redirect()->back()->with('info', 'Email verification is disabled.');
-})->name('verification.send');
 
 // Ruta para el cambio de idioma
 Route::get('locale/{locale}', function ($locale) {
@@ -105,6 +96,21 @@ Route::middleware('auth:student')->group(function () {
     })->name('configuracion');
 
     Route::post('/profesor/{profesor}/add_review', [ProfesorController::class, 'addReview'])->name('add_review');
+    Route::post('/profesor/{profesorId}/resenia/{reseniaId}/toggle', [ProfesorController::class, 'toggleOcultarResenia'])->name('profesor.resenia.toggle');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+});
+
+// Admin routes (each admin scoped to their institution via policies)
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('profesors', \App\Http\Controllers\Admin\ProfesorController::class)->except(['show']);
+    Route::post('profesors/{profesor}/toggle-active', [\App\Http\Controllers\Admin\ProfesorController::class, 'toggleActive'])->name('profesors.toggleActive');
+
+    Route::get('resenias', [\App\Http\Controllers\Admin\ReseniaController::class, 'index'])->name('resenias.index');
+    Route::post('resenias/{resenia}/toggle-hidden', [\App\Http\Controllers\Admin\ReseniaController::class, 'toggleHidden'])->name('resenias.toggleHidden');
+
+    // Minimal admin dashboard (no site sidebar)
+    Route::get('dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
 });

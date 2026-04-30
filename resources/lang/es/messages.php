@@ -92,5 +92,32 @@ return [
     'meta_description' => 'Bienvenido a Profeopina, el mejor lugar para revisar y encontrar profesores.',
     'search_error' => 'No se pudo completar la búsqueda en este momento. Por favor, inténtelo de nuevo más tarde.',
     'review_added' => 'Reseña agregada correctamente.',
+
+    // Admin/login related
+    'admin_prompt' => '¿Eres Administrador?',
+    'admin_login_here' => 'Inicia sesión aquí',
+    'admin_login_title' => 'Iniciar sesión - Administrador',
+    'admin_dashboard_title' => 'Panel de Administración',
+    'admin_dashboard_welcome' => 'Bienvenido al panel de administración.',
+    'admin' => 'Administrador',
+    'quick_actions' => 'Acciones Rápidas',
+    'add_profesor' => 'Agregar Profesor',
+    'add_profesor_desc' => 'Crear un nuevo profesor en el sistema',
+    'manage_profesors' => 'Gestionar Profesores',
+    'view_manage_profesors' => 'Ver y editar profesores existentes',
+    'manage_resenias' => 'Gestionar Reseñas',
+    'view_manage_resenias' => 'Moderar y gestionar reseñas de profesores',
+    'moderate_reviews' => 'Moderar Reseñas',
+    'reviews' => 'Reseñas',
+    'hidden' => 'Oculto',
+    'toggle_hidden' => 'Cambiar Oculto',
+    'yes' => 'Sí',
+    'no' => 'No',
+    'cancel' => 'Cancelar',
+    'error' => 'Error',
+    'no_data_found' => 'No se encontraron datos',
+    'toggle' => 'Cambiar',
+    'actions' => 'Acciones',
+    'unauthorized' => 'No tienes autorización para realizar esta acción'
 ];
 

@@ -22,4 +22,12 @@ Security actions taken and next steps
 4. Notes
 - I verified `.env` is not tracked in git. If you want, I can help remove secrets from git history and add a GitHub Actions workflow to audit secrets automatically.
 
+**Session driver note:** the application previously used the `database` session driver in some environments which caused repeated SQL errors when the `sessions` table did not exist or the DB was unavailable. To avoid this class of failures, either:
+- Use the default `file` session driver in environments without a stable DB (set `SESSION_DRIVER=file`), or
+- Ensure the `sessions` table is present and migrated when using `database` sessions (run `php artisan session:table` + `php artisan migrate`) and add DB monitoring/alerts for availability.
+
+If you want, I can add a short check script or CI job to validate the `sessions` table exists as part of deploys.
+
+**Mailing and email verification:** transactional email and automatic email verification have been removed from the application. I changed the default mailer to `log` in `config/mail.php` so the app will not attempt SMTP by default; if you have a local `.env` that sets `MAIL_MAILER=smtp`, set it to `log` or empty to avoid SMTP connection attempts. If you'd rather re-enable email flows later, I can add feature-flagged mailers and a secure configuration.
+
 If you want, I can proceed to clean git history now and prepare the commands to rotate service credentials remotely. Let me know which rotation steps you want me to perform next.

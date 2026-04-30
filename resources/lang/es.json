@@ -1,8 +1,7 @@
 {
     "(and :count more error)": "(y :count error más)",
     "(and :count more errors)": "(y :count error más)|(y :count errores más)|(y :count errores más)",
-    "A new verification link has been sent to the email address you provided in your profile settings.": "Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionó en la configuración de su perfil.",
-    "A new verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificación a su dirección de correo electrónico.",
+
     "A Timeout Occurred": "Se produjo un tiempo de espera",
     "Accept": "Aceptar",
     "Accept Invitation": "Aceptar invitación",
@@ -344,7 +343,6 @@
     "Use Proxy": "Usa proxy",
     "User": "Usuario",
     "Variant Also Negotiates": "Variante También Negocia",
-    "Verify Email Address": "Confirme su correo electrónico",
     "View": "Ver",
     "View :name": "Ver :name",
     "We were unable to find a registered user with this email address.": "No pudimos encontrar un usuario registrado con esta dirección de correo electrónico.",

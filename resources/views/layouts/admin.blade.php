@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/navbarsinsesion.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/admin-layout.css">
     <link rel="icon" href="/logos/Logo_icon.svg" type="image/png">
-    <script src="/js/inicio_img_cambio.js"></script>
+    <title>@yield('title', __('messages.profeopina'))</title>
+    @stack('styles')
 </head>
 <body>
     <header class="header">
@@ -31,29 +33,17 @@
                     <img src="/imagenes/es.png" alt="Traducir a Español">
                 </a>
             </div>
-            <div class="logo">
-                <a href="https://www.facebook.com/profile.php?id=61557749877856"><img src="/imagenes/facebook.png" alt="profeopina"></a>
-            </div>
         </nav>
     </header>
-    @yield('content')
-    <script src="/js/inicio_img_cambio.js"></script>
-    <!--barra lateral  -->
-    <input type="checkbox" id="btn-menu">
-    <div class="container-menu">
-        <div class="cont-menu">
-            <nav>
-                <a href="{{ route('inicio') }}">{{ __('messages.inicio') }}</a>
-                <a href="{{ route('login.student') }}" class="btn btn-outline-danger">{{ __('messages.login') }}</a>
-                <a href="{{ route('register.student') }}" class="btn btn-outline-danger">{{ __('messages.register') }}</a>
-                <!--<<a href="{{ route('contactanos') }}">{{ __('messages.contact_us') }}</a>>-->
-            </nav>
-            <div>
-                <label for="btn-menu" class="icon-equis">
-                    <img src="/imagenes/xazul.png" alt="x">
-                </label>
-            </div>
+
+    <main class="admin-main">
+        @if(auth()->check() && auth()->user()->isAdmin())
+            @include('layouts._admin_navbar')
+        @endif
+        <div class="admin-content">
+            @yield('content')
         </div>
-    </div>
+    </main>
+
 </body>
 </html>

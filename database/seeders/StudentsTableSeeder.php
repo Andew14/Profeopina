@@ -15,20 +15,24 @@ class StudentsTableSeeder extends Seeder
     public function run(): void
     {
         //
-        Student::create([
-            'name' => 'Andrew',
-                'email' => 'student1@example.com',
-                'password' => Hash::make('password123'),
+        Student::firstOrCreate(
+            ['email' => 'student1@example.com'],
+            [
+                'name' => 'Andrew',
+                'password' => Hash::make('123456789'),
                 'created_at' => now(),
                 'updated_at' => now(),
-        ]);
-        Student::create([
-            'name' => 'Marco',
-                'email' => 'student2@example.com',
-                'password' => Hash::make('holamarco'),
+            ]
+        );
+        Student::firstOrCreate(
+            ['email' => 'student2@example.com'],
+            [
+                'name' => 'Marco',
+                'password' => Hash::make('123456789'),
                 'created_at' => now(),
                 'updated_at' => now(),
-        ]);
+            ]
+        );
         
     }
 }

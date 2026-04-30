@@ -1,54 +1,12 @@
 <?php
 
+// App\Mail\TestMail kept as placeholder for historical reasons.
+// Sending transactional emails has been removed from the application.
+// If you need a Mailable in the future, recreate it intentionally.
+
 namespace App\Mail;
 
-use Illuminate\Bus\Queueable;
-use Illuminate\Mail\Mailable;
-use Illuminate\Mail\Mailables\Content;
-use Illuminate\Mail\Mailables\Envelope;
-use Illuminate\Queue\SerializesModels;
-
-class TestMail extends Mailable
+class TestMail
 {
-    use Queueable, SerializesModels;
-
-    public $details;
-
-    /**
-     * Create a new message instance.
-     */
-    public function __construct($details)
-    {
-        $this->details = $details;
-    }
-
-    /**
-     * Get the message envelope.
-     */
-    public function envelope(): Envelope
-    {
-        return new Envelope(
-            subject: 'Test Mail',
-        );
-    }
-
-    /**
-     * Get the message content definition.
-     */
-    public function content(): Content
-    {
-        return new Content(
-            view: 'emails.test', // Cambiar 'view.name' por la vista correcta
-        );
-    }
-
-    /**
-     * Get the attachments for the message.
-     *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
-     */
-    public function attachments(): array
-    {
-        return [];
-    }
+    // deprecated stub
 }

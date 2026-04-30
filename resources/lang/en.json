@@ -1,8 +1,7 @@
 {
     "(and :count more error)": "(and :count more error)",
     "(and :count more errors)": "(and :count more error)|(and :count more errors)|(and :count more errors)",
-    "A new verification link has been sent to the email address you provided in your profile settings.": "A new verification link has been sent to the email address you provided in your profile settings.",
-    "A new verification link has been sent to your email address.": "A new verification link has been sent to your email address.",
+
     "A Timeout Occurred": "A Timeout Occurred",
     "Accept": "Accept",
     "Accept Invitation": "Accept Invitation",
@@ -345,7 +344,6 @@
     "Use Proxy": "Use Proxy",
     "User": "User",
     "Variant Also Negotiates": "Variant Also Negotiates",
-    "Verify Email Address": "Verify Email Address",
     "View": "View",
     "View :name": "View :name",
     "We were unable to find a registered user with this email address.": "We were unable to find a registered user with this email address.",

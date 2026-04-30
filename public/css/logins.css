@@ -78,3 +78,8 @@ body {
     color: #d9bc27;
     text-decoration: none
 }
+
+.admin-note{
+    margin-top: 24px; /* add spacing so it's not adjacent to the submit button */
+    color: #374151;
+}

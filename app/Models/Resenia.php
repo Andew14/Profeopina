@@ -9,11 +9,25 @@ class Resenia extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['contenido', 'calificacion', 'profesor_id'];
+    protected $fillable = ['contenido', 'calificacion', 'profesor_id', 'period_id', 'oculto'];
 
-    
+    protected $casts = [
+        'calificacion' => 'integer',
+        'oculto' => 'boolean',
+    ];
+
     public function profesor()
     {
-        return $this->belongsTo(Profesor::class , 'resenia_id');
+        return $this->belongsTo(Profesor::class, 'profesor_id');
+    }
+
+    public function period()
+    {
+        return $this->belongsTo(Period::class);
+    }
+
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
     }
 }

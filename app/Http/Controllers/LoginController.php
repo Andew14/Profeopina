@@ -10,7 +10,15 @@ class LoginController extends Controller
 {
     public function logout(Request $request)
     {
-        Auth::logout(); // Cierra la sesión del usuario
+        // Logout for student guard if present
+        if (Auth::guard('student')->check()) {
+            Auth::guard('student')->logout();
+        }
+
+        // Logout default web guard (users/admins)
+        if (Auth::check()) {
+            Auth::logout();
+        }
 
         $request->session()->invalidate(); // Invalida la sesión
 

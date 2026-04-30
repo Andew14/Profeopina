@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @push('styles')
     <link rel="stylesheet" href="/css/logins.css">
+    @endpush
     <title>@yield('title')</title>
 </head>
 <body>
 
-@extends('layouts.navbarsinsesion')
+@extends('layouts.main')
 
 @section('content')
     <div class="contenedor">

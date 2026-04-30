@@ -3,16 +3,9 @@
   "version": "1.0.0",
   "description": "Sitio web para reseñas de profesores",
   "main": "postcss.config.js",
-  "usuario":"root",
-  "contrasenia":"",
-  "impuesto":"18%",
-  "descuento_maximo":"10%",
-  "correo":"andrew@gmal.com",
-  "telefono":"9852664",
-  "DB_HOST":"127.0.0.1",
-"DB_PORT":"3306",
-"DB_DATABASE":"ferreteria",
-
+  "DB_HOST": "127.0.0.1",
+  "DB_PORT": "3306",
+  "DB_DATABASE": "profeopina",
   "directories": {
     "test": "tests"
   },

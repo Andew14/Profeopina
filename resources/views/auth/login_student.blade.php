@@ -9,7 +9,7 @@
 </head>
 <body>
 
-@extends('layouts.navbarsinsesion')
+@extends('layouts.main')
 
 @section('title', __('messages.login_title'))
 
@@ -46,6 +46,8 @@
                     </button>
                 </div>
             </form>
+
+
         </div>
     </div>
 @endsection

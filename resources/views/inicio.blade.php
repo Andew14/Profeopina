@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('layouts.main')
+
+@section('titulo', __('messages.profeopina'))
+
+@push('styles')
     <link rel="stylesheet" href="/css/inicio.css">
-    <link rel="icon" href="/logos/Logo_icon.svg" type="image/png">
     <script src="/js/cambio.js"></script>
-    <title>@yield('titulo', __('messages.profeopina'))</title>
-    <meta name="description" content="{{ __('messages.meta_description') }}">
-</head>
-<body>
-    @extends('layouts.navbarsinsesion')
-    @section('titulo', __('messages.profeopina'))
-    @section('content')
+    <style>
+        .centered-images { text-align: center; margin-top: 50px; }
+        .search-section { text-align: center; margin-top: 20px; }
+    </style>
+@endpush
+
+@section('content')
     <div class="centered-images">
         <div>
             <h1>{{ __('messages.welcome_to') }}</h1>
@@ -30,6 +28,4 @@
             <input type="text" name="profesor" placeholder="{{ __('messages.search_teacher') }}" class="search-input">
         </form>
     </div>
-    @endsection
-</body>
-</html>
+@endsection

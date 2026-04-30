@@ -19,6 +19,7 @@ class StudentController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
+        // First try the student guard
         if (Auth::guard('student')->attempt($credentials)) {
             // Log successful attempt and intended URL for debugging
             Log::info('Student login successful', [
@@ -37,10 +38,10 @@ class StudentController extends Controller
             return redirect()->route('iniciologueado');
         }
 
-        Log::warning('Student login failed', ['email' => $request->input('email')]);
+        Log::warning('Login failed for student guard', ['email' => $request->input('email')]);
 
         return redirect()->back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
+            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros de estudiantes.',
         ])->withInput($request->only('email'));
     }
 

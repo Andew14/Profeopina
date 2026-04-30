@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/css/navbarconsesion.css">
+    <!-- Dynamic CSS based on auth status could be handled here or via push stacks, but for now we unify -->
+    <link rel="stylesheet" href="/css/navbar.css">
     <link rel="icon" href="/logos/Logo_icon.svg" type="image/png">
     <script src="/js/inicio_img_cambio.js"></script>
+    <title>@yield('titulo', __('messages.profeopina'))</title>
+    @stack('styles')
 </head>
 <body>
     <header class="header">
@@ -22,7 +25,7 @@
         </div>
         <nav class="right-section">
             <div class="logo">
-                <a href="{{ route('locale.change', ['locale' => 'en']) }}" id="en-link" class="lang-link"  onclick="changeLanguage('en'); return false;">
+                <a href="{{ route('locale.change', ['locale' => 'en']) }}" id="en-link" class="lang-link" onclick="changeLanguage('en'); return false;">
                     <img src="/imagenes/en.png" alt="Traducir a Inglés">
                 </a>
             </div>
@@ -31,31 +34,36 @@
                     <img src="/imagenes/es.png" alt="Traducir a Español">
                 </a>
             </div>
-            <div class="logo" >
+            <div class="logo">
                 <a href="https://www.facebook.com/profile.php?id=61557749877856"><img src="/imagenes/facebook.png" alt="profeopina"></a>
-
             </div>
         </nav>
     </header>
+
     @yield('content')
-    <!--barra lateral  -->
+    
+    <script src="/js/inicio_img_cambio.js"></script>
+    
+    <!-- Barra lateral -->
     <input type="checkbox" id="btn-menu">
     <div class="container-menu">
         <div class="cont-menu">
             <nav>
-                <a href="{{route('iniciologueado')}}">{{ __('messages.home') }}</a>
-                <a href="{{route('tuperfil')}}">{{ __('messages.profile') }}</a>
-                <!--<a href="{{route('turesenia')}}" class="btn btn-outline-danger">{{ __('messages.your_reviews') }}</a>>-->
-                <!--<a href="{{route('profeguardado')}}" class="btn btn-outline-danger">{{ __('messages.saved_teachers') }}</a>>-->
-                <!--<a href="{{route('configuracion')}}" class="btn btn-outline-danger">{{ __('messages.account_settings') }}</a>-->
-                <!--<<a href="{{route('contactanos')}}">{{ __('messages.contact_us') }}</a>>-->
-                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('messages.logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-                
+                @auth('student')
+                    <a href="{{ route('iniciologueado') }}">{{ __('messages.home') }}</a>
+                    <a href="{{ route('tuperfil') }}">{{ __('messages.profile') }}</a>
+                    <!-- Pending: Add other links like turesenia, etc if needed -->
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('messages.logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                        <a href="{{ route('inicio') }}">{{ __('messages.inicio') }}</a>
+                        <a href="{{ route('login.student') }}" class="btn btn-outline-danger">{{ __('messages.login') }}</a>
+                        <a href="{{ route('register.student') }}" class="btn btn-outline-danger">{{ __('messages.register') }}</a>
+                @endauth
             </nav>
             <div>
                 <label for="btn-menu" class="icon-equis">

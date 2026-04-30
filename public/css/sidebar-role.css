@@ -1,0 +1,16 @@
+/* Minimal role-based sidebar styles */
+.container-menu.admin-menu .cont-menu nav a {
+    color: #c68607; /* goldish for admin */
+}
+
+.container-menu.student-menu .cont-menu nav a {
+    color: #0b76b8; /* blue for students */
+}
+
+.container-menu.user-menu .cont-menu nav a {
+    color: #333; /* neutral for normal users */
+}
+
+.container-menu.guest-menu .cont-menu nav a {
+    color: #555; /* guest links */
+}

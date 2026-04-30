@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @push('styles')
     <link rel="stylesheet" href="/css/logins.css">
+    @endpush
     <title>@yield('title')</title>
 </head>
 <body>
 
-    @extends('layouts.navbarsinsesion')
+    @extends('layouts.main')
 
     @section('title', __('messages.login_title'))
 
@@ -49,6 +51,10 @@
                         <button type="submit" class="btn-continue ms-4">
                             {{ __('messages.login_button') }}
                         </button>
+                    </div>
+
+                    <div class="admin-note mt-4 text-sm text-gray-700">
+                        Eres Administrador, <a href="{{ route('login.admin') }}" class="underline text-indigo-600 hover:text-indigo-800">Inicia sesión aquí</a>.
                     </div>
                 </form>
             </div>

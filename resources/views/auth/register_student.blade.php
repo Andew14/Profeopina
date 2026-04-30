@@ -10,7 +10,7 @@
 </head>
 <body>
 
-@extends('layouts.navbarsinsesion')
+@extends('layouts.main')
 
 @section('content')
     <div class="contenedor">

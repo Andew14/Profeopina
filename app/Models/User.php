@@ -49,6 +49,21 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    public function institution()
+    {
+        return $this->belongsTo(Institution::class);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -62,4 +77,11 @@ class User extends Authenticatable
         ];
     }
     
+    /**
+     * Prevent sending email verification notifications.
+     */
+    public function sendEmailVerificationNotification()
+    {
+        // intentionally empty: email verification is disabled for this app
+    }
 }

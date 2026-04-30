@@ -1,0 +1,12 @@
+.admin-sidebar{
+    background:#fff3cd;
+    border-right:1px solid #f0c36d;
+    padding:1rem;
+}
+.admin-sidebar a{
+    display:block;
+    color:#856404;
+    padding:0.5rem 0;
+    text-decoration:none;
+}
+.admin-sidebar a:hover{background:#fff9e6}

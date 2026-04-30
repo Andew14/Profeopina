@@ -92,5 +92,32 @@ return [
     'meta_description' => 'Welcome to Profeopina, the best place to review and find teachers.',
     'search_error' => 'Search could not be completed at this time. Please try again later.',
     'review_added' => 'Review added successfully.',
+
+    // Admin/login related
+    'admin_prompt' => 'Are you an administrator?',
+    'admin_login_here' => 'Login here',
+    'admin_login_title' => 'Admin Login',
+    'admin_dashboard_title' => 'Admin Dashboard',
+    'admin_dashboard_welcome' => 'Welcome to the admin dashboard.',
+    'admin' => 'Administrator',
+    'quick_actions' => 'Quick Actions',
+    'add_profesor' => 'Add Professor',
+    'add_profesor_desc' => 'Create a new professor in the system',
+    'manage_profesors' => 'Manage Professors',
+    'view_manage_profesors' => 'View and edit existing professors',
+    'manage_resenias' => 'Manage Reviews',
+    'view_manage_resenias' => 'Moderate and manage professor reviews',
+    'moderate_reviews' => 'Moderate Reviews',
+    'reviews' => 'Reviews',
+    'hidden' => 'Hidden',
+    'toggle_hidden' => 'Toggle Hidden',
+    'yes' => 'Yes',
+    'no' => 'No',
+    'cancel' => 'Cancel',
+    'error' => 'Error',
+    'no_data_found' => 'No data found',
+    'toggle' => 'Toggle',
+    'actions' => 'Actions',
+    'unauthorized' => 'You do not have authorization to perform this action'
 ];
 
