@@ -12,7 +12,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AdminsTableSeeder::class);
         $this->call(ProfesorsTableSeeder::class);
         $this->call(EvaluationsTableSeeder::class);
-        $this->call(ReseniasTableSeeder::class);
+        $this->call(QuestionSeeder::class);
         $this->call(StudentsTableSeeder::class);
+        $this->call(CoursesTableSeeder::class);
+        $this->call(ReseniasTableSeeder::class);
     }
 }

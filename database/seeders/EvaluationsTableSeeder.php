@@ -10,12 +10,23 @@ class EvaluationsTableSeeder extends Seeder
 {
     public function run()
     {
-        $period = Period::create([
-            'name' => 'Semestre 2026-I',
-            'start_time' => now(),
-            'end_time' => now()->addMonths(4),
-            'is_active' => true,
-        ]);
+        // Periodos estandarizados
+        Period::firstOrCreate(
+            ['name' => '2026-II'],
+            ['start_time' => now(), 'end_time' => now()->addMonths(4), 'is_active' => true]
+        );
+        Period::firstOrCreate(
+            ['name' => '2026-I'],
+            ['start_time' => now()->subMonths(6), 'end_time' => now()->subMonths(2), 'is_active' => false]
+        );
+        Period::firstOrCreate(
+            ['name' => '2025-II'],
+            ['start_time' => now()->subYear(), 'end_time' => now()->subMonths(8), 'is_active' => false]
+        );
+        Period::firstOrCreate(
+            ['name' => '2025-I'],
+            ['start_time' => now()->subYear()->subMonths(6), 'end_time' => now()->subYear()->subMonths(2), 'is_active' => false]
+        );
 
         Question::create([
             'text' => '¿Cómo evalúa la capacidad pedagógica del docente?',

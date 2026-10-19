@@ -175,6 +175,9 @@ a:hover {
 /* NEW: Admin Header & Base Layout (without sidebar) */
 
 .admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -182,7 +185,7 @@ a:hover {
     border-bottom: 3px solid #d9bc27;
     padding: 0 20px;
     height: 70px;
-    box-shadow: 0 2px 8px rgba(53, 53, 100, 0.15);
+    box-shadow: 0 4px 12px rgba(53, 53, 100, 0.2);
 }
 
 .admin-header-left {
@@ -217,9 +220,11 @@ a:hover {
     transition: all 0.3s;
 }
 
-.admin-nav-link:hover {
-    background: #f0f0f0;
+.admin-nav-link:hover,
+.admin-nav-link.active {
+    background: #ffffff;
     color: #353564;
+    font-weight: bold;
     border-left-color: #d9bc27;
 }
 

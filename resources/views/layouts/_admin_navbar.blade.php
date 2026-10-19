@@ -12,6 +12,12 @@
         <a href="{{ route('admin.resenias.index') }}" class="nav-link">
             {{ __('messages.manage_resenias') }}
         </a>
+        <a href="{{ route('admin.courses.index') }}" class="nav-link">
+            Cursos
+        </a>
+        <a href="{{ route('admin.periods.index') }}" class="nav-link">
+            Ciclos Académicos
+        </a>
     </nav>
     <nav class="admin-sidebar-footer">
         <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-admin').submit();" class="nav-link logout-link">

@@ -9,11 +9,11 @@ class AdminLoginLinkTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_login_page_has_admin_link()
+    public function test_login_page_does_not_have_admin_link_for_security()
     {
         $this->get(route('login'))
             ->assertStatus(200)
-            ->assertSee('Eres Administrador')
-            ->assertSee(route('login.admin'));
+            ->assertDontSee('Eres Administrador')
+            ->assertDontSee(route('login.admin'));
     }
 }

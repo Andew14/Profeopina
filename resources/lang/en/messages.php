@@ -13,6 +13,7 @@ return [
     'account_settings' => 'Account Settings',
     'email' => 'Email',
     'password' => 'Password',
+    'new_password' => 'New Password',
     'login_title' => 'Login - Profeopina',
     'login' => 'Login',
     'login_comment' => 'Let\'s start by completing the following form',
@@ -118,6 +119,16 @@ return [
     'no_data_found' => 'No data found',
     'toggle' => 'Toggle',
     'actions' => 'Actions',
-    'unauthorized' => 'You do not have authorization to perform this action'
+    'delete' => 'Delete',
+    'unauthorized' => 'You do not have authorization to perform this action',
+    'status' => 'Status',
+    'active' => 'Active',
+    'inactive' => 'Inactive',
+    'filter_by_course' => 'Filter by course',
+    'order_by' => 'Order by',
+    'all_courses' => 'All courses',
+    'all_statuses' => 'All statuses',
+    'reported' => 'Reported',
+    'content' => 'Content'
 ];
 

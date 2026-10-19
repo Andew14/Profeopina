@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Course;
+use App\Models\Period;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
@@ -12,6 +14,12 @@ class StudentController extends Controller
 {
     public function showLoginForm()
     {
+        if (Auth::guard('web')->check()) {
+            return redirect()->route('admin.dashboard');
+        }
+        if (Auth::guard('student')->check()) {
+            return redirect()->route('iniciologueado');
+        }
         return view('auth.login_student');
     }
 
@@ -19,9 +27,7 @@ class StudentController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        // First try the student guard
         if (Auth::guard('student')->attempt($credentials)) {
-            // Log successful attempt and intended URL for debugging
             Log::info('Student login successful', [
                 'student_id' => Auth::guard('student')->id(),
                 'intended' => session('url.intended'),
@@ -29,7 +35,6 @@ class StudentController extends Controller
 
             $request->session()->regenerate();
 
-            // If the intended URL is the login page itself, ignore it and redirect to iniciologueado
             $intended = session()->pull('url.intended', null);
             if ($intended && $intended !== route('login') && $intended !== route('login.student')) {
                 return redirect()->to($intended);
@@ -38,13 +43,17 @@ class StudentController extends Controller
             return redirect()->route('iniciologueado');
         }
 
-        Log::warning('Login failed for student guard', ['email' => $request->input('email')]);
+        if (Auth::guard('web')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->route('admin.dashboard');
+        }
+
+        Log::warning('Login failed for student and web guards', ['email' => $request->input('email')]);
 
         return redirect()->back()->withErrors([
-            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros de estudiantes.',
+            'email' => 'Las credenciales proporcionadas no coinciden con nuestros registros.',
         ])->withInput($request->only('email'));
     }
-
 
     public function create()
     {
@@ -62,7 +71,7 @@ class StudentController extends Controller
         $student = Student::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password), // Asegúrate de que se usa Hash::make
+            'password' => Hash::make($request->password),
         ]);
 
         Auth::guard('student')->login($student);
@@ -70,9 +79,45 @@ class StudentController extends Controller
 
         return redirect()->route('iniciologueado');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('student')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
+    }
+
+    public function editProfile()
+    {
+        $student = Auth::guard('student')->user();
+        return view('edit_profile', compact('student'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $student = Auth::guard('student')->user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:students,email,' . $student->id,
+            'password' => 'nullable|string|min:8',
+        ]);
+
+        $student->name = $request->name;
+        $student->email = $request->email;
+
+        if ($request->filled('password')) {
+            $student->password = Hash::make($request->password);
+        }
+
+        $student->save();
+
+        return redirect()->route('tuperfil')->with('success', 'Perfil actualizado correctamente.');
+    }
+
     public function showProfile()
     {
-        // Debug info: log whether the student is authenticated when accessing profile
         Log::info('Accessing student profile', [
             'is_authenticated' => Auth::guard('student')->check(),
             'student_id' => Auth::guard('student')->id(),
@@ -83,5 +128,12 @@ class StudentController extends Controller
         return view('tuperfil', compact('student'));
     }
 
-
+    public function showReviews()
+    {
+        $student = Auth::guard('student')->user();
+        $resenias = $student->resenias()->with('profesor', 'period')->latest()->get();
+        $courses = Course::orderBy('name', 'asc')->get();
+        $periods = Period::orderBy('id', 'desc')->get();
+        return view('turesenia', compact('resenias', 'student', 'courses', 'periods'));
+    }
 }

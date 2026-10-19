@@ -20,6 +20,7 @@ class StudentUiTest extends TestCase
         $response->assertDontSee('Iniciar sesión');
         $response->assertDontSee('Admin Login');
         $response->assertSee('Cerrar sesión');
-        $response->assertSee('Perfil');
+        $response->assertSee('Tus reseñas');
+        $response->assertSee('Configuraciones de la cuenta');
     }
 }

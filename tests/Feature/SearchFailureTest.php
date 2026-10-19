@@ -16,10 +16,9 @@ class SearchFailureTest extends TestCase
 
     public function test_search_handles_database_exception_gracefully()
     {
-        // Mock the Eloquent static call to throw when trying to query
-        Mockery::mock('alias:App\\Models\\Profesor')
-            ->shouldReceive('where')
-            ->andThrow(new \Exception('DB down'));
+        // Break the database connection dynamically
+        \Illuminate\Support\Facades\DB::disconnect();
+        config(['database.default' => 'invalid_connection']);
 
         // Expect the error to be logged once
         Log::shouldReceive('error')->once();
@@ -28,5 +27,8 @@ class SearchFailureTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee(__('messages.search_error'));
+
+        // Restore connection default
+        config(['database.default' => 'sqlite']);
     }
 }

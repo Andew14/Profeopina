@@ -11,4 +11,14 @@ class ReseniaPolicy
     {
         return $user->isAdmin() && $user->institution_id === $resenia->profesor->institution_id;
     }
+
+    public function dismissReport(User $user, Resenia $resenia): bool
+    {
+        return $user->isAdmin() && $user->institution_id === $resenia->profesor->institution_id;
+    }
+
+    public function delete(User $user, Resenia $resenia): bool
+    {
+        return $user->isAdmin() && $user->institution_id === $resenia->profesor->institution_id;
+    }
 }

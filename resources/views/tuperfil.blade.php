@@ -38,27 +38,21 @@
                         <input type="email" id="email" name="email" value="{{ $student->email }}">
                     </div>
                     <div>
-                        <label for="password">{{ __('messages.password') }}:</label>
-                        <input type="password" id="password" name="password">
+                        <label for="password">{{ __('messages.new_password') }}:</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Opcional: ingresar nueva contraseña">
+                            <button type="button" class="toggle-password-btn" aria-label="Mostrar contraseña" title="Mostrar contraseña">
+                                <i class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
                     </div>
                     <button type="submit">{{ __('messages.save') }}</button>
                 </form>
             </div>
         </div>
 
-        <script>
-            document.getElementById('editProfileBtn').onclick = function() {
-                document.getElementById('editProfileModal').style.display = "block";
-            }
-            document.getElementsByClassName('close')[0].onclick = function() {
-                document.getElementById('editProfileModal').style.display = "none";
-            }
-            window.onclick = function(event) {
-                if (event.target == document.getElementById('editProfileModal')) {
-                    document.getElementById('editProfileModal').style.display = "none";
-                }
-            }
-        </script>
-    @endsection
-</body>
-</html>
+@endsection
+
+@push('scripts')
+    <script src="/js/tuperfil-modal.js"></script>
+@endpush

@@ -1,0 +1,105 @@
+/* Estilos para modales y componentes interactivos del panel de administración */
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-success {
+    background: #dcfce7;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+}
+
+.badge-danger {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecdd3;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    max-width: 460px;
+    width: 90%;
+    padding: 24px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    animation: fadeInModal 0.2s ease-out;
+}
+
+.modal-icon-warning {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #fee2e2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #dc2626;
+    font-size: 1.25em;
+}
+
+.modal-notice {
+    background: #fff7ed;
+    border-left: 4px solid #f97316;
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-size: 0.88em;
+    color: #9a3412;
+    margin-bottom: 18px;
+    line-height: 1.4;
+}
+
+.modal-btn-cancel {
+    background: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.92em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-btn-cancel:hover {
+    background: #e2e8f0;
+}
+
+.modal-btn-confirm-danger {
+    background: #dc2626;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.92em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.modal-btn-confirm-danger:hover {
+    background: #b91c1c;
+}
+
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}

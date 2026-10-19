@@ -19,21 +19,12 @@
                 </label>
             </div>
             <div class="prof">
-                <img id="logo-title" src="/logos/Logo_title_alt3.svg" alt="profeopina">
+                <a href="{{ route('admin.dashboard') }}" title="Ir al Panel de Administración" style="display: inline-block;">
+                    <img id="logo-title" src="/logos/Logo_title_alt3.svg" alt="profeopina" style="cursor: pointer;">
+                </a>
             </div>
         </div>
-        <nav class="right-section">
-            <div class="logo">
-                <a href="{{ route('locale.change', ['locale' => 'en']) }}" id="en-link" class="lang-link" onclick="changeLanguage('en'); return false;">
-                    <img src="/imagenes/en.png" alt="Traducir a Inglés">
-                </a>
-            </div>
-            <div class="logo">
-                <a href="{{ route('locale.change', ['locale' => 'es']) }}" id="es-link" class="lang-link" onclick="changeLanguage('es'); return false;">
-                    <img src="/imagenes/es.png" alt="Traducir a Español">
-                </a>
-            </div>
-        </nav>
+        <nav class="right-section"></nav>
     </header>
 
     <main class="admin-main">

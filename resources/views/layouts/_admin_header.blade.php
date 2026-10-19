@@ -1,31 +1,31 @@
 <header class="admin-header">
     <div class="admin-header-left">
         <div class="admin-logo">
-            <img src="/logos/Logo_title_alt3.svg" alt="profeopina">
+            <a href="{{ route('admin.dashboard') }}" title="Ir al Panel de Administración" style="display: inline-block;">
+                <img src="/logos/Logo_title_alt3.svg" alt="profeopina" style="cursor: pointer;">
+            </a>
         </div>
     </div>
 
     <nav class="admin-header-nav">
-        <a href="{{ route('admin.dashboard') }}" class="admin-nav-link">
+        <a href="{{ route('admin.dashboard') }}" class="admin-nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             {{ __('messages.home') }}
         </a>
-        <a href="{{ route('admin.profesors.index') }}" class="admin-nav-link">
+        <a href="{{ route('admin.profesors.index') }}" class="admin-nav-link {{ request()->routeIs('admin.profesors.*') ? 'active' : '' }}">
             {{ __('messages.manage_profesors') }}
         </a>
-        <a href="{{ route('admin.resenias.index') }}" class="admin-nav-link">
+        <a href="{{ route('admin.resenias.index') }}" class="admin-nav-link {{ request()->routeIs('admin.resenias.*') ? 'active' : '' }}">
             {{ __('messages.manage_resenias') }}
+        </a>
+        <a href="{{ route('admin.courses.index') }}" class="admin-nav-link {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}">
+            Cursos
+        </a>
+        <a href="{{ route('admin.periods.index') }}" class="admin-nav-link {{ request()->routeIs('admin.periods.*') ? 'active' : '' }}">
+            Semestres Académicos
         </a>
     </nav>
 
     <div class="admin-header-right">
-        <div class="admin-lang-selector">
-            <a href="{{ route('locale.change', ['locale' => 'en']) }}" class="lang-link">
-                <img src="/imagenes/en.png" alt="English">
-            </a>
-            <a href="{{ route('locale.change', ['locale' => 'es']) }}" class="lang-link">
-                <img src="/imagenes/es.png" alt="Español">
-            </a>
-        </div>
         <div class="admin-user-menu">
             <span class="admin-user-name">{{ auth()->user()->name }}</span>
             <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-admin-header').submit();" class="admin-logout-btn">

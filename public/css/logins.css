@@ -7,7 +7,9 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 80vh; /* Usamos min-height en lugar de height */
+    min-height: calc(85vh - 60px);
+    padding: 30px 15px;
+    box-sizing: border-box;
 }
 
 body {
@@ -16,25 +18,27 @@ body {
 
 .login-container {
     background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 35px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(53, 53, 100, 0.08);
+    border: 1px solid #e2e8f0;
     text-align: center;
-    width: 90%; /* Ajustamos el ancho */
-    max-width: 500px; /* Limitamos el ancho máximo */
+    width: 100%;
+    max-width: 480px;
+    box-sizing: border-box;
 }
 
 .login-container h2 {
-    padding-top: 5%;
-    padding-bottom: 2%;
-    margin-bottom: 20px;
+    margin: 0 0 20px 0;
+    padding: 0;
     text-align: left;
-    font-size: 15px;
-    color: #808080;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
 }
 
 .inputs {
-    margin-bottom: 20px; /* Ajustamos el espacio entre los campos */
+    margin-bottom: 20px;
 }
 
 .input-group {
@@ -42,19 +46,84 @@ body {
     text-align: left;
 }
 
-.input-group input {
-    width: calc(100% - 20px); /* Usamos calc para restar el padding */
-    height: 40px; /* Ajustamos la altura */
-    padding: 10px;
-    border: 1px solid #353564;
-    border-radius: 5px;
-    transition: border-color 0.3s;
+.input-group label {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 6px;
+    display: block;
 }
 
-.input-group input:focus {
+.input-group input:not([type="checkbox"]) {
+    width: 100%;
+    box-sizing: border-box;
+    height: 46px;
+    padding: 10px 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    font-size: 15px;
+    color: #1e293b;
+}
+
+.input-group input:not([type="checkbox"]):focus {
     border-color: #353564;
-    border-width: 2.5px;
+    box-shadow: 0 0 0 3px rgba(53, 53, 100, 0.12);
     outline: none;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.password-wrapper input:not([type="checkbox"]) {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-right: 42px !important;
+}
+
+.toggle-password-btn {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 6px;
+    margin: 0;
+    cursor: pointer;
+    color: #64748b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    transition: color 0.2s ease, transform 0.15s ease;
+    z-index: 2;
+}
+
+.toggle-password-btn:hover {
+    color: #353564;
+}
+
+.toggle-password-btn:active {
+    transform: translateY(-50%) scale(0.92);
+}
+
+.toggle-password-btn:focus-visible {
+    outline: 2px solid #353564;
+    border-radius: 4px;
+}
+
+.input-group input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    min-width: 18px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer;
 }
 
 .btn-continue {
@@ -83,3 +152,37 @@ body {
     margin-top: 24px; /* add spacing so it's not adjacent to the submit button */
     color: #374151;
 }
+
+/* Adaptación para pantallas móviles (posiciona el formulario arriba para no chocar con el teclado) */
+@media (max-width: 600px) {
+    .contenedor {
+        min-height: auto;
+        align-items: flex-start !important;
+        padding: 15px 12px 40px 12px;
+        box-sizing: border-box;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 16px;
+        margin-top: 5px;
+        box-sizing: border-box;
+    }
+
+    .login-container h2 {
+        padding-top: 0;
+        margin-top: 5px;
+    }
+
+    .input-group input:not([type="checkbox"]) {
+        height: 44px;
+        font-size: 16px; /* Evita auto-zoom en iOS */
+    }
+
+    .btn-continue {
+        height: 44px;
+        font-size: 16px;
+    }
+}
+

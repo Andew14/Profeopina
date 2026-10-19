@@ -29,7 +29,12 @@
 
                     <div class="input-group">
                         <x-label for="password" value="{{ __('messages.password') }}" />
-                        <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('messages.password') }}" />
+                        <div class="password-wrapper">
+                            <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('messages.password') }}" />
+                            <button type="button" class="toggle-password-btn" aria-label="Mostrar contraseña" title="Mostrar contraseña">
+                                <i class="fas fa-eye-slash"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 

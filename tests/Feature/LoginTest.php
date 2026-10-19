@@ -41,7 +41,7 @@ class LoginTest extends TestCase
             'password' => 'password',
         ]);
 
-        $response->assertRedirect(route('dashboard'));
+        $response->assertRedirect(route('admin.dashboard'));
         $this->assertTrue(auth()->check());
         $this->assertEquals('admin_unas@example.com', auth()->user()->email);
     }

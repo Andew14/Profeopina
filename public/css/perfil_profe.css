@@ -2,274 +2,629 @@
 body, html {
     height: 100%;
     margin: 0;
-    font-family: Arial, sans-serif;
-    
-    justify-content: center;
-    align-items: center;
-}
-@media( width < 900px){
-    .container{
-        background-color: #F1F4F8 ;
-    }
-    .profesor-perfil {
-        background-color: #ffffff; 
-        border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-}
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
 }
 
+.container {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 25px 15px;
+    box-sizing: border-box;
+}
+
+/* Layout Grid en Cuadrícula de 2 Columnas */
+.perfil-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 25px;
+    margin-top: 10px;
+    align-items: start;
+}
+
+@media (min-width: 992px) {
+    .perfil-grid-layout {
+        grid-template-columns: 340px 1fr;
+        align-items: start;
+    }
+
+    .perfil-sidebar {
+        align-self: start;
+    }
+
+    .perfil-main-content {
+        align-self: start;
+    }
+}
 
 .profesor-perfil {
-    max-width: 800px; /* Establece el ancho máximo */
-    padding: 20px;
+    max-width: 100%;
+    padding: 0;
     width: 100%;
-    text-align: center;
-    margin-top: 20px; /* Separación superior */
-    overflow: hidden; /* Para evitar desbordamientos */
-    background-color: #ffffff; ;
-    
-}
-.btn-guardar {
-    position: absolute;
-    top: 110px; /* Ajusta la posición según tu navbar */
-    right: 50px; /* Ajusta la posición según tu layout */
+    overflow: hidden;
     background-color: transparent;
-    border: none;
-    cursor: pointer;
 }
 
-
-/* Primera Parte */
-.profesor-info {
+.profesor-card {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #353564;
+    padding: 24px 20px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
     margin-bottom: 20px;
 }
 
 .profesor-foto {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #d9bc27;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
 }
 
 .profesor-nombre {
-    font-size: 24px;
-    color: #333333;
-    margin: 10px 0;
-}
-
-.profesor-especialidad,
-.profesor-institucion,
-.profesor-ciudad,
-.profesor-colegio {
-    font-size: 16px;
-    color: #666666;
-    margin: 5px 0;
+    font-size: 21px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 10px 0 5px 0;
 }
 
 .profesor-descripcion {
-    font-size: 14px;
-    color: #555555;
-    margin-top: 15px;
-    line-height: 1.6;
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 12px;
+    line-height: 1.5;
     font-style: italic;
 }
 
-/* Segunda Parte */
-.etiquetas-destacadas {
-    margin-top: 20px;
+/* Sección de Desglose de Estrellas */
+.gp-rating-card {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #353564;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
 }
 
-.etiquetas-destacadas h2 {
-    font-size: 20px;
+.gp-rating-title {
+    font-size: 1.05em;
+    font-weight: 700;
     color: #353564;
-    margin-bottom: 15px;
-}
-
-.etiquetas {
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.etiqueta {
-    background-color: #d9bc27;
-    color: #ffffff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    text-align: center;
-    cursor: default;
-}
-
-
-/* Tercera Parte: Según los reviews */
-.segun-reviews {
-    background-color: #e0e3e7;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 20px;
-    width: 96%;
-    text-align: left; /* Alinear texto a la izquierda */
-}
-
-.segun-reviews h2 {
-    font-size: 18px;
-    color: #353564;
-    margin-bottom: 10px;
-    
-}
-
-.segun-reviews ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.segun-reviews li {
-    font-size: 16px;
-    color: #333333;
-    margin: 5px 0;
-}
-
-.segun-reviews .azul {
-    color: #353564;
-    font-weight: bold;
-}
-/* Cuarta Parte: Botones */
-.botones {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-.botones a {
-    text-decoration: none !important;
-}
-.boton {
-    background-color: #d9bc27;
-    color: #ffffff;
-    border: none;
-    border-radius: 20px;
-    padding: 10px  80px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    
-}
-/* Centrar el contenedor de las reseñas */
-.lista-resenias {
+.gp-rating-content {
     display: flex;
     flex-direction: column;
+    gap: 15px;
+}
+
+.gp-rating-score-box {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.gp-score-number {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #1e293b;
+    line-height: 1;
+}
+
+.gp-score-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gp-stars-row {
+    color: #f59e0b;
+    font-size: 1.05rem;
+    letter-spacing: 1px;
+}
+
+.gp-total-count {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 500;
+}
+
+.gp-rating-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.gp-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.gp-bar-row:hover {
+    background-color: #f1f5f9;
+}
+
+.gp-star-label {
+    width: 25px;
+    font-weight: 700;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.gp-bar-track {
+    flex: 1;
+    height: 9px;
+    background: #e2e8f0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.gp-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+    border-radius: 5px;
+    transition: width 0.5s ease-out;
+}
+
+.gp-bar-value {
+    width: 55px;
+    text-align: right;
+    color: #64748b;
+    font-size: 0.76rem;
+    font-weight: 600;
+}
+
+/* Tooltips e Iconos de Información (i) en Métricas */
+.dimensiones-valoracion {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #353564;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    margin-bottom: 20px;
+}
+
+.metric-row-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.metric-info-wrapper {
+    position: relative;
+    display: inline-flex;
     align-items: center;
 }
 
-/* Estilo para el contenedor de reseñas */
-.resenia {
-    background-color: #e0f2f1; /* Color de fondo azul suave */
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    width: 80%; /* Puedes ajustar el ancho como prefieras */
-    max-width: 600px; /* Ancho máximo opcional */
+.metric-info-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #f1f5f9;
+    color: #475569;
+    font-size: 0.65rem;
+    font-weight: bold;
+    cursor: help;
+    transition: all 0.2s ease;
+    border: 1px solid #94a3b8;
+    line-height: 1;
+}
+
+.metric-info-icon:hover, .metric-info-icon:focus {
+    background-color: #353564;
+    color: #ffffff;
+    border-color: #353564;
+}
+
+.metric-tooltip {
+    visibility: hidden;
+    opacity: 0;
+    width: 220px;
+    background-color: #1e293b;
+    color: #f8fafc;
+    text-align: left;
+    border-radius: 8px;
+    padding: 9px 11px;
+    position: absolute;
+    z-index: 99;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    font-weight: normal;
+    font-size: 0.76rem;
+    line-height: 1.4;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+}
+
+.metric-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #1e293b transparent transparent transparent;
+}
+
+.metric-info-wrapper:hover .metric-tooltip,
+.metric-info-wrapper:focus-within .metric-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Sección Unificada de Reseñas del Profesor */
+.resenias-seccion-card {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    border-top: 3px solid #353564;
+    padding: 20px;
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    margin-bottom: 25px;
+}
+
+.resenias-seccion-header {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Alinear contenido a la izquierda */
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 15px;
+}
+
+.resenias-seccion-titulo {
+    font-size: 1.25em;
+    color: #353564;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Toolbar de Filtros Integrada */
+.review-filters-toolbar {
+    background: #f8fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    padding: 14px 16px;
+}
+
+.filter-group-title {
+    font-size: 0.78em;
+    font-weight: 700;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.filter-pills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.filter-pill {
+    background: #ffffff;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    user-select: none;
+}
+
+.filter-pill:hover {
+    background: #f1f5f9;
+    color: #1e293b;
+    border-color: #94a3b8;
+}
+
+.filter-pill.active {
+    background: #353564;
+    color: #ffffff;
+    border-color: #353564;
+    box-shadow: 0 2px 4px rgba(53, 53, 100, 0.2);
+}
+
+.filter-pill.active-star {
+    background: #d9bc27;
+    color: #ffffff;
+    border-color: #d9bc27;
+    box-shadow: 0 2px 4px rgba(217, 188, 39, 0.3);
+}
+
+/* Estilos de Lista de Reseñas */
+.lista-resenias {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+}
+
+.resenia {
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    padding: 16px 18px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    transition: border-color 0.2s ease;
+}
+
+.resenia:hover {
+    border-color: #94a3b8;
 }
 
 .resenia-calificacion {
-    font-weight: bold;
-    margin-bottom: 5px;
-    font-size: 1.5em; /* Tamaño del número de la calificación */
+    font-weight: 800;
+    margin-bottom: 6px;
+    font-size: 1.3em;
+    color: #2563eb;
     display: flex;
     align-items: center;
 }
 
 .resenia-texto {
-    margin-left: 10px; /* Espaciado a la izquierda */
+    font-size: 0.92rem;
+    color: #334155;
+    line-height: 1.5;
+    margin-top: 8px;
 }
-.resenia-calificacion{
-    color: #1565c0;
-    margin-left: 10px;
-}
+
 .estrella {
-    width: 20px; /* Tamaño de la estrella */
-    height: 20px; /* Asegura que la estrella tenga altura consistente */
-    margin-left: 5px; /* Espacio entre el número y la estrella */
+    width: 17px;
+    height: 17px;
+    margin-left: 4px;
 }
 
-.boton:hover {
-    background-color: #c7ab22;
-}
-/* Quinta Parte: Enlace */
-.enlace-profesor {
-    margin-top: 20px;
+.botones {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
 }
 
-.enlace-texto {
-    color: #d9bc27;
-    text-decoration: none ;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.enlace-texto:hover {
-    text-decoration: underline;
-}
-/* Estilos para el modal */
-.modal-header {
-    background-color: #d9bc27; /* Cambia este color por el que desees */
-    color: white;
-}
-/* Estilos para el botón "Add Review" */
-/* Estilos para el botón "Add Review" */
 .btn-primary {
-    background-color: #d9bc27 !important; /* Color amarillo */
+    background-color: #d9bc27 !important;
     border: none !important;
     color: white !important;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+    padding: 10px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.btn-primary:hover {
+    background-color: #c7ab22 !important;
+}
+
+.resenia-period-title { 
+    font-size: 1.5em; 
+    color: #353564; 
+    margin-top: 20px; 
+    border-bottom: 2px solid #ccc; 
+}
+
+.admin-controls { 
+    margin-top: 10px; 
+    background: #f8f9fa; 
+    padding: 10px; 
+    border-radius: 4px; 
+    border: 1px dashed #ccc; 
+}
+
+.btn-ocultar { 
+    background-color: #dc3545; 
+    color: white; 
+    border: none; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+    border-radius: 3px; 
+}
+
+.btn-mostrar { 
+    background-color: #28a745; 
+    color: white; 
+    border: none; 
+    padding: 5px 10px; 
+    cursor: pointer; 
+    border-radius: 3px; 
+}
+
+.hidden-comment { 
+    font-style: italic; 
+    color: #888; 
+}
+
+/* Botón de denunciar con candado */
+.resenia-report-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-candado-denuncia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #64748b;
+    padding: 5px 10px;
+    border-radius: 18px;
+    font-size: 0.82rem;
     cursor: pointer;
-    border-radius: 12px;
-    transition-duration: 0.4s;
+    transition: all 0.25s ease;
+    text-decoration: none;
+    line-height: 1;
+    outline: none;
 }
 
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary.active,
-.show > .btn-primary.dropdown-toggle {
-    background-color: #b7961e !important; /* Amarillo más oscuro para el hover, focus, active */
-    border: none !important;
-    color: white !important;
+.btn-candado-denuncia i {
+    font-size: 0.85rem;
+    color: #64748b;
+    transition: color 0.2s ease;
 }
 
-/* Estilos para el botón dentro del modal */
-.modal-footer .btn-primary {
-    background-color: #d9bc27 !important; /* Color amarillo */
-    border: none !important;
+.btn-candado-denuncia .label-denunciar {
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: max-width 0.25s ease, opacity 0.2s ease, margin-left 0.2s ease;
+    font-weight: 600;
+    font-size: 0.76rem;
+    color: #dc2626;
 }
 
-.modal-footer .btn-primary:hover,
-.modal-footer .btn-primary:focus,
-.modal-footer .btn-primary:active,
-.modal-footer .btn-primary.active,
-.show > .modal-footer .btn-primary.dropdown-toggle {
-    background-color: #b7961e !important; /* Amarillo más oscuro para el hover, focus, active */
-    border: none !important;
-    color: white !important;
+.btn-candado-denuncia:hover {
+    background-color: #fef2f2;
+    border-color: #fca5a5;
+    box-shadow: 0 2px 6px rgba(220, 38, 38, 0.1);
 }
+
+.btn-candado-denuncia:hover i {
+    color: #dc2626;
+}
+
+.btn-candado-denuncia:hover .label-denunciar {
+    max-width: 75px;
+    opacity: 1;
+    margin-left: 5px;
+}
+
+/* =========================================================
+   OPTIMIZACIONES MÓVILES PARA EL PERFIL DEL PROFESOR (< 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px 10px;
+    }
+
+    .profesor-card {
+        padding: 18px 14px;
+        margin-bottom: 15px;
+    }
+
+    .profesor-foto {
+        width: 105px;
+        height: 105px;
+    }
+
+    .profesor-nombre {
+        font-size: 1.25rem;
+    }
+
+    .profesor-descripcion {
+        font-size: 0.85rem;
+    }
+
+    .botones .btn-primary {
+        width: 100% !important;
+        padding: 12px 16px;
+        font-size: 15px;
+        border-radius: 10px;
+    }
+
+    .gp-rating-card {
+        padding: 16px 14px;
+        margin-bottom: 15px;
+    }
+
+    .gp-rating-score-box {
+        padding: 10px 12px;
+        gap: 12px;
+    }
+
+    .gp-score-number {
+        font-size: 2.2rem;
+    }
+
+    .dimensiones-valoracion {
+        padding: 16px 14px;
+        margin-bottom: 15px;
+    }
+
+    .resenias-seccion-card {
+        padding: 16px 12px;
+    }
+
+    .resenias-seccion-titulo {
+        font-size: 1.15rem;
+    }
+
+    .review-filters-toolbar {
+        padding: 12px 10px;
+    }
+
+    .filter-pills-container {
+        gap: 5px;
+    }
+
+    .filter-pill {
+        padding: 5px 10px;
+        font-size: 0.78rem;
+        touch-action: manipulation;
+    }
+
+    .resenia {
+        padding: 14px 12px;
+        border-radius: 8px;
+    }
+
+    .resenia-texto {
+        font-size: 0.92rem;
+        line-height: 1.5;
+    }
+
+    .modal-dialog {
+        margin: 12px auto;
+        max-width: calc(100% - 24px);
+    }
+
+    .modal-content {
+        padding: 16px 14px;
+    }
+}
+

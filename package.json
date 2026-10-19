@@ -2,6 +2,7 @@
   "name": "profeopina",
   "version": "1.0.0",
   "description": "Sitio web para reseñas de profesores",
+  "type": "module",
   "main": "postcss.config.js",
   "DB_HOST": "127.0.0.1",
   "DB_PORT": "3306",
@@ -129,14 +130,18 @@
     "yaml": "^2.4.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.11",
+    "@tailwindcss/typography": "^0.5.20",
     "jest": "^29.7.0",
     "jsdom": "^24.1.0",
     "jsdom-global": "^3.0.2"
   },
   "scripts": {
+    "dev": "vite",
+    "build": "vite build",
     "test": "jest",
-    "start": "node changeEnv.js && php artisan config:clear && php artisan config:cache && php artisan serve",
-    "change-env": "node changeEnv.js && php artisan config:clear && php artisan config:cache"
+    "start": "php artisan config:clear && php artisan config:cache && php artisan serve",
+    "change-env": "node changeEnv.cjs && php artisan config:clear && php artisan config:cache"
   },
   "repository": {
     "type": "git",

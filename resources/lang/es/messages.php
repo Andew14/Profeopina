@@ -13,6 +13,7 @@ return [
     'account_settings' => 'Configuraciones de la cuenta',
     'email' => 'Correo electrónico',
     'password' => 'Contraseña',
+    'new_password' => 'Nueva Contraseña',
     'login_title' => 'Iniciar Sesión - Profeopina',
     'login' => 'Iniciar sesión',
     'login_comment' => 'Comencemos completando el siguiente formulario',
@@ -118,6 +119,16 @@ return [
     'no_data_found' => 'No se encontraron datos',
     'toggle' => 'Cambiar',
     'actions' => 'Acciones',
-    'unauthorized' => 'No tienes autorización para realizar esta acción'
+    'delete' => 'Eliminar',
+    'unauthorized' => 'No tienes autorización para realizar esta acción',
+    'status' => 'Estado',
+    'active' => 'Activo',
+    'inactive' => 'Inactivo',
+    'filter_by_course' => 'Filtrar por curso',
+    'order_by' => 'Ordenar por',
+    'all_courses' => 'Todos los cursos',
+    'all_statuses' => 'Todos los estados',
+    'reported' => 'Denunciadas',
+    'content' => 'Contenido'
 ];
 

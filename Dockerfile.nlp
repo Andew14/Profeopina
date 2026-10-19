@@ -1,0 +1,21 @@
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Instalar dependencias del sistema mínimas
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copiar manifiesto de dependencias
+COPY requirements.txt .
+
+# Instalar PyTorch optimizado para CPU y dependencias
+RUN pip install --no-cache-dir --extra-index-url https://download.pytorch.org/whl/cpu -r requirements.txt
+
+# Copiar el script del servidor FastAPI
+COPY nlp_server.py .
+
+EXPOSE 8001
+
+CMD ["python", "nlp_server.py"]

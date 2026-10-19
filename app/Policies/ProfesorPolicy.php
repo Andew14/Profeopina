@@ -26,4 +26,9 @@ class ProfesorPolicy
     {
         return $this->update($user, $profesor);
     }
+
+    public function delete(User $user, Profesor $profesor): bool
+    {
+        return $this->update($user, $profesor);
+    }
 }

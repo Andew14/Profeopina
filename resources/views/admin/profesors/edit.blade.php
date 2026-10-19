@@ -40,7 +40,7 @@
         </div>
 
         <div class="admin-form-group">
-            <label>Descripción</label>
+            <label>{{ __('messages.description') }}</label>
             <textarea name="descripcion" placeholder="Descripción del profesor y su experiencia" rows="4">{{ old('descripcion', $profesor->descripcion) }}</textarea>
             @error('descripcion')
                 <small style="color: #d9344c;">{{ $message }}</small>
@@ -56,14 +56,58 @@
         </div>
 
         <div class="admin-form-group">
-            <label>Estado</label>
+            <label>{{ __('messages.institution') }}</label>
+            <select name="institution_id" required>
+                <option value="">Seleccione una institución</option>
+                @foreach($institutions as $institution)
+                    <option value="{{ $institution->id }}" {{ old('institution_id', $profesor->institution_id) == $institution->id ? 'selected' : '' }}>
+                        {{ $institution->name }}
+                    </option>
+                @endforeach
+            </select>
+            @error('institution_id')
+                <small style="color: #d9344c;">{{ $message }}</small>
+            @enderror
+        </div>
+
+        <div class="admin-form-group">
+            <label>{{ __('messages.status') }}</label>
             <select name="activo">
-                <option value="1" {{ old('activo', $profesor->activo) == 1 ? 'selected' : '' }}>Activo</option>
-                <option value="0" {{ old('activo', $profesor->activo) == 0 ? 'selected' : '' }}>Inactivo</option>
+                <option value="1" {{ old('activo', $profesor->activo) == 1 ? 'selected' : '' }}>{{ __('messages.active') }}</option>
+                <option value="0" {{ old('activo', $profesor->activo) == 0 ? 'selected' : '' }}>{{ __('messages.inactive') }}</option>
             </select>
             @error('activo')
                 <small style="color: #d9344c;">{{ $message }}</small>
             @enderror
+        </div>
+
+        <div class="admin-form-group">
+            <label style="font-weight: 600; margin-bottom: 6px; display: block;">Cursos que dicta</label>
+            @if(isset($courses) && $courses->count() > 0)
+                <!-- Vista Rápida de Cursos Seleccionados (Arriba) -->
+                <div style="margin-bottom: 12px; padding: 12px; background: #f1f5f9; border: 1px dashed #cbd5e1; border-radius: 8px;">
+                    <div style="font-size: 0.85em; font-weight: 700; color: #475569; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">
+                        📌 Cursos seleccionados actualmente (<span id="selectedCount">0</span>):
+                    </div>
+                    <div id="selectedCoursesPills" style="display: flex; flex-wrap: wrap; gap: 6px; min-height: 28px; align-items: center;">
+                        <span style="font-size: 0.85em; color: #94a3b8; font-style: italic;">No hay cursos seleccionados.</span>
+                    </div>
+                </div>
+
+                <input type="text" id="courseSearchInput" placeholder="🔍 Buscar curso por nombre para agregar/quitar..." style="width: 100%; padding: 8px 12px; margin-bottom: 10px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 0.9em;">
+
+                <div id="courseListContainer" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; padding: 12px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; max-height: 220px; overflow-y: auto;">
+                    @foreach($courses as $course)
+                        <label class="course-item" data-id="{{ $course->id }}" data-name="{{ strtolower($course->name) }}" data-title="{{ $course->name }}" style="display: flex; align-items: center; gap: 8px; font-weight: normal; font-size: 0.9em; cursor: pointer; background: white; padding: 6px 10px; border-radius: 4px; border: 1px solid #e2e8f0;">
+                            <input type="checkbox" name="courses[]" class="js-course-checkbox" value="{{ $course->id }}" data-title="{{ $course->name }}"
+                                {{ (is_array(old('courses')) && in_array($course->id, old('courses'))) || (!old('courses') && in_array($course->id, $assignedCourseIds ?? [])) ? 'checked' : '' }}>
+                            <span>{{ $course->name }}</span>
+                        </label>
+                    @endforeach
+                </div>
+            @else
+                <p style="font-size: 0.9em; color: #718096; font-style: italic;">No hay cursos registrados en la institución. <a href="{{ route('admin.courses.index') }}">Crear cursos</a></p>
+            @endif
         </div>
         
         <div class="admin-form-actions">
@@ -72,4 +116,8 @@
         </div>
     </form>
 </div>
+
+@push('scripts')
+    <script src="/js/admin-profesor-courses.js"></script>
+@endpush
 @endsection

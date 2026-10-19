@@ -18,6 +18,7 @@ class AdminDashboardTest extends TestCase
              ->get(route('admin.dashboard'))
              ->assertStatus(200)
              ->assertSee(trans('messages.admin_dashboard_title'))
-             ->assertSee(route('admin.profesors.create'));
+             ->assertSee(route('admin.profesors.index'))
+             ->assertSee(route('admin.periods.index'));
     }
 }

@@ -10,15 +10,13 @@ class AdminSidebarTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_admin_does_not_see_admin_links_on_home()
+    public function test_admin_is_redirected_to_dashboard_from_home()
     {
         $admin = User::factory()->create(['role' => 'admin']);
 
         $this->actingAs($admin)
              ->get('/')
-             ->assertStatus(200)
-             ->assertDontSee(route('admin.profesors.index'))
-             ->assertDontSee(route('admin.resenias.index'));
+             ->assertRedirect(route('admin.dashboard'));
     }
 
     public function test_guest_does_not_see_admin_links()

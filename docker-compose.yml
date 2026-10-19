@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # ===================================================
+  # 1. Aplicación Web Laravel (Nginx/Apache + PHP 8.2)
+  # ===================================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opina_app
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+      - nlp
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      NLP_SERVICE_URL: http://nlp:8001/analizar
+    volumes:
+      - opina_storage:/var/www/html/storage
+    networks:
+      - opina_network
+
+  # ===================================================
+  # 2. Base de Datos MySQL 8.0 (Volumen persistente)
+  # ===================================================
+  db:
+    image: mysql:8.0
+    container_name: opina_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-profeopina}
+      MYSQL_USER: ${DB_USERNAME:-opina_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret_db_password}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-secret_root_password}
+    ports:
+      - "127.0.0.1:3306:3306"
+    volumes:
+      - opina_db_data:/var/lib/mysql
+    networks:
+      - opina_network
+
+  # ===================================================
+  # 3. Microservicio IA NLP (FastAPI + PyTorch + BERT)
+  # ===================================================
+  nlp:
+    build:
+      context: .
+      dockerfile: Dockerfile.nlp
+    container_name: opina_nlp
+    restart: always
+    environment:
+      NLP_HOST: 0.0.0.0
+      NLP_PORT: 8001
+    volumes:
+      - ./modelo_aspecto:/app/modelo_aspecto:ro
+      - ./modelo_sentimiento:/app/modelo_sentimiento:ro
+    ports:
+      - "127.0.0.1:8001:8001"
+    networks:
+      - opina_network
+
+volumes:
+  opina_db_data:
+    driver: local
+  opina_storage:
+    driver: local
+
+networks:
+  opina_network:
+    driver: bridge

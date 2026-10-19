@@ -34,5 +34,12 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'gemini' => [
+        'key' => env('GEMINI_API_KEY'),
+    ],
+
+    'nlp' => [
+        'url' => env('NLP_SERVICE_URL', 'http://127.0.0.1:8001/analizar'),
+    ],
 
 ];

@@ -19,3 +19,17 @@ yarn-error.log
 /.idea
 /.vscode
 node_modules
+
+# Dataset y archivos comprimidos pesados
+dataset/
+*.zip
+
+# Modelos locales BERT (se transfieren directamente al servidor para no superar el límite de GitHub de 100MB)
+modelo_aspecto/
+modelo_sentimiento/
+
+# Archivos y scripts de tesis / investigación académica
+planes_ia/
+build_*.py
+__pycache__/
+*.pyc

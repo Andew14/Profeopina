@@ -11,22 +11,26 @@ html, body {
 .editar {
     display: inline-flex;
     align-items: center;
-    gap: 5px; /* Espacio entre el icono y el texto */
-    padding: 8px 12px;
-    color: #ffcc00; /* Reemplaza esto con tu tono de amarillo específico */
+    gap: 6px;
+    padding: 8px 16px;
+    color: #ffffff;
+    background-color: #353564;
     font-weight: bold;
-    text-decoration: none; /* Quita el subrayado */
-    border: 2px solid #ffcc00; /* Borde del color del botón */
-    border-radius: 5px; /* Bordes redondeados */
-    transition: background-color 0.3s, color 0.3s; /* Transición para el hover */
+    text-decoration: none;
+    border: 2px solid #d9bc27;
+    border-radius: 6px;
+    transition: all 0.3s ease;
 }
 
 .editar:hover {
-    background-color: #ffcc00; /* Fondo amarillo en hover */
-    color: #fff; /* Texto blanco en hover */
+    background-color: #353564;
+    color: #d9bc27; /* La palabra se hace amarillo brillante al pasar el mouse */
+    border-color: #d9bc27;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .editar .fa-pencil-alt {
+    color: #d9bc27;
     font-size: 1em;
 }
 

@@ -31,4 +31,9 @@ class Student extends Authenticatable
     {
         return $this->password;
     }
+
+    public function resenias()
+    {
+        return $this->belongsToMany(Resenia::class, 'users_resenias', 'user_id', 'resenia_id');
+    }
 }

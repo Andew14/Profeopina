@@ -9,11 +9,13 @@ class Resenia extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['contenido', 'calificacion', 'profesor_id', 'period_id', 'oculto'];
+    protected $fillable = ['contenido', 'calificacion', 'profesor_id', 'period_id', 'oculto', 'denunciada', 'curso', 'procesada'];
 
     protected $casts = [
         'calificacion' => 'integer',
         'oculto' => 'boolean',
+        'denunciada' => 'boolean',
+        'procesada' => 'boolean',
     ];
 
     public function profesor()
@@ -29,5 +31,10 @@ class Resenia extends Model
     public function answers()
     {
         return $this->hasMany(Answer::class);
+    }
+
+    public function students()
+    {
+        return $this->belongsToMany(Student::class, 'users_resenias', 'resenia_id', 'user_id');
     }
 }

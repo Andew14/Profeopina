@@ -16,10 +16,9 @@ class SearchFailureLoggingTest extends TestCase
 
     public function test_search_returns_fallback_when_logging_fails()
     {
-        // Mock Profesor::where to throw
-        Mockery::mock('alias:App\\Models\\Profesor')
-            ->shouldReceive('where')
-            ->andThrow(new \Exception('DB down'));
+        // Break the database connection dynamically
+        \Illuminate\Support\Facades\DB::disconnect();
+        config(['database.default' => 'invalid_connection']);
 
         // Make logging throw as well
         Log::shouldReceive('error')->once()->andThrow(new \Exception('Log failing'));
@@ -28,5 +27,8 @@ class SearchFailureLoggingTest extends TestCase
 
         $response->assertStatus(200);
         $response->assertSee(__('messages.search_error'));
+
+        // Restore connection default
+        config(['database.default' => 'sqlite']);
     }
 }

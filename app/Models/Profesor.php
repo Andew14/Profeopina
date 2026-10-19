@@ -26,4 +26,17 @@ class Profesor extends Model
     {
         return $this->belongsTo(Institution::class);
     }
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'course_profesor', 'profesor_id', 'course_id');
+    }
+
+    public function getFotoUrlAttribute()
+    {
+        if ($this->foto && (file_exists(public_path($this->foto)) || str_starts_with($this->foto, 'http'))) {
+            return str_starts_with($this->foto, 'http') ? $this->foto : asset($this->foto);
+        }
+        return asset('imagenes/default-avatar.svg');
+    }
 }
