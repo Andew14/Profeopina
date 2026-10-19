@@ -34,9 +34,24 @@ class Profesor extends Model
 
     public function getFotoUrlAttribute()
     {
-        if ($this->foto && (file_exists(public_path($this->foto)) || str_starts_with($this->foto, 'http'))) {
-            return str_starts_with($this->foto, 'http') ? $this->foto : asset($this->foto);
+        if ($this->foto) {
+            // Si es un archivo local existente
+            if (file_exists(public_path($this->foto))) {
+                return asset($this->foto);
+            }
+
+            // Si es una URL externa
+            if (str_starts_with($this->foto, 'http://') || str_starts_with($this->foto, 'https://')) {
+                // El servidor de sistemasunas.edu.pe se encuentra caído (Cloudflare 522).
+                // Retornar avatar por defecto para que la página cargue al instante sin congelarse.
+                if (str_contains($this->foto, 'sistemasunas.edu.pe')) {
+                    return asset('imagenes/default-avatar.svg');
+                }
+
+                return $this->foto;
+            }
         }
+
         return asset('imagenes/default-avatar.svg');
     }
 }

@@ -27,7 +27,7 @@
             <div class="perfil-sidebar">
                 <!-- Tarjeta del Profesor -->
                 <div class="profesor-card">
-                    <img src="{{ $profesor->foto_url }}" alt="{{ __('messages.teacher_photo') }}" class="profesor-foto">
+                    <img src="{{ $profesor->foto_url }}" alt="{{ __('messages.teacher_photo') }}" class="profesor-foto" onerror="this.onerror=null;this.src='{{ asset('imagenes/default-avatar.svg') }}';">
                     <h1 class="profesor-nombre">{{ $profesor->nombre }} {{ $profesor->apellido }}</h1>
                     
                     <div style="font-size: 0.88em; color: #475569; margin-top: 4px; margin-bottom: 8px; font-weight: 500;">

@@ -97,7 +97,7 @@
                         <td>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 @if($res->profesor->foto)
-                                    <img src="{{ $res->profesor->foto_url }}" alt="Foto" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #cbd5e1;">
+                                    <img src="{{ $res->profesor->foto_url }}" alt="Foto" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid #cbd5e1;" onerror="this.onerror=null;this.src='{{ asset('imagenes/default-avatar.svg') }}';">
                                 @endif
                                 <div>
                                     <strong>{{ $res->profesor->nombre }} {{ $res->profesor->apellido }}</strong>

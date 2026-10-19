@@ -57,7 +57,7 @@
                     <div class="teacher-card">
                         <div class="teacher-card-main">
                             <div class="teacher-avatar-container">
-                                <img src="{{ $profesor->foto_url }}" alt="Foto de {{ $profesor->nombre }}" class="teacher-avatar">
+                                <img src="{{ $profesor->foto_url }}" alt="Foto de {{ $profesor->nombre }}" class="teacher-avatar" onerror="this.onerror=null;this.src='{{ asset('imagenes/default-avatar.svg') }}';">
                             </div>
                             
                             <div class="teacher-details">
