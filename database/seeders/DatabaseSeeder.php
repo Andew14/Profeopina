@@ -15,6 +15,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QuestionSeeder::class);
         $this->call(StudentsTableSeeder::class);
         $this->call(CoursesTableSeeder::class);
-        $this->call(ReseniasTableSeeder::class);
+        // $this->call(ReseniasTableSeeder::class); // Omitido en producción para mantener las reseñas reales de los usuarios
     }
 }

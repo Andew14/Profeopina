@@ -14,14 +14,18 @@ class AdminsTableSeeder extends Seeder
         $unas = Institution::where('name', 'UNAS')->first();
 
         if ($unas) {
-            User::firstOrCreate([
-                'email' => 'admin@unas.edu.pe'
-            ],[
-                'name' => 'Admin UNAS',
-                'password' => Hash::make('12345678'), // Default simple password for testing
-                'role' => 'admin',
-                'institution_id' => $unas->id,
-            ]);
+            $adminEmail = env('ADMIN_EMAIL', 'admin@unas.edu.pe');
+            $adminPassword = env('ADMIN_PASSWORD', 'OpinaAdmin#2026!UNAS');
+
+            User::updateOrCreate(
+                ['email' => $adminEmail],
+                [
+                    'name' => 'Administrador Opina',
+                    'password' => Hash::make($adminPassword),
+                    'role' => 'admin',
+                    'institution_id' => $unas->id,
+                ]
+            );
         }
     }
 }
