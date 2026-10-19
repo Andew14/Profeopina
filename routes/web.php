@@ -109,6 +109,7 @@ Route::middleware('auth:student')->group(function () {
     Route::delete('/resenia/eliminar/{id}', [ProfesorController::class, 'deleteReview'])->name('resenia.eliminar');
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
     Route::put('/profile/update/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/delete', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // Admin routes (each admin scoped to their institution via policies)

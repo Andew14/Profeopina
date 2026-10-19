@@ -18,11 +18,36 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    if (modal) {
-        window.addEventListener('click', function(event) {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
+    // Modal Eliminar Cuenta
+    const deleteBtn = document.getElementById('deleteAccountBtn');
+    const deleteModal = document.getElementById('deleteAccountModal');
+    const closeDeleteBtn = document.querySelector('.close-delete');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+    if (deleteBtn && deleteModal) {
+        deleteBtn.addEventListener('click', function() {
+            deleteModal.style.display = 'block';
         });
     }
+
+    if (closeDeleteBtn && deleteModal) {
+        closeDeleteBtn.addEventListener('click', function() {
+            deleteModal.style.display = 'none';
+        });
+    }
+
+    if (cancelDeleteBtn && deleteModal) {
+        cancelDeleteBtn.addEventListener('click', function() {
+            deleteModal.style.display = 'none';
+        });
+    }
+
+    window.addEventListener('click', function(event) {
+        if (modal && event.target === modal) {
+            modal.style.display = 'none';
+        }
+        if (deleteModal && event.target === deleteModal) {
+            deleteModal.style.display = 'none';
+        }
+    });
 });
