@@ -56,7 +56,11 @@ COPY . .
 # Copiar los assets compilados desde la etapa frontend
 COPY --from=frontend /app/public/build public/build
 
-# Instalar dependencias de producción de PHP
+# Configurar Git safe.directory y asegurar limpieza de vendor previo
+RUN git config --global --add safe.directory /var/www/html \
+    && rm -rf /var/www/html/vendor
+
+# Instalar dependencias limpias de producción de PHP
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # Copiar y hacer ejecutable el script de inicio
