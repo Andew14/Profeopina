@@ -12,10 +12,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        $middleware->trustProxies(at: '*');
+
         $middleware->web(\App\Http\Middleware\SecurityHeadersMiddleware::class);
         $middleware->web(\App\Http\Middleware\SanitizeInputMiddleware::class);
         $middleware->web(\App\Http\Middleware\LocaleMiddleware::class);
-        $middleware->web(\Illuminate\Session\Middleware\StartSession::class);
 
         $middleware->redirectGuestsTo(function ($request) {
             if ($request->is('admin') || $request->is('admin/*')) {

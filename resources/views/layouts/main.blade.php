@@ -115,6 +115,7 @@
 
     <script src="/js/toast-notifications.js"></script>
     <script src="/js/password-toggle.js"></script>
+    <script src="/js/prevent-double-submit.js"></script>
     @stack('scripts')
 </body>
 </html>

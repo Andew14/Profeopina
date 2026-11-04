@@ -9,6 +9,7 @@ use App\Models\Period;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\RateLimiter;
 
 class StudentController extends Controller
 {
@@ -33,6 +34,12 @@ class StudentController extends Controller
                 'intended' => session('url.intended'),
             ]);
 
+            // Limpiar intentos de acceso acumulados tras éxito
+            $email = strtolower(trim((string) $request->input('email', '')));
+            $key = $email !== '' ? ($email . '|' . $request->ip()) : $request->ip();
+            RateLimiter::clear(md5('auth' . $key));
+            RateLimiter::clear('auth:' . $key);
+
             $request->session()->regenerate();
 
             $intended = session()->pull('url.intended', null);
@@ -44,6 +51,11 @@ class StudentController extends Controller
         }
 
         if (Auth::guard('web')->attempt($credentials)) {
+            $email = strtolower(trim((string) $request->input('email', '')));
+            $key = $email !== '' ? ($email . '|' . $request->ip()) : $request->ip();
+            RateLimiter::clear(md5('auth' . $key));
+            RateLimiter::clear('auth:' . $key);
+
             $request->session()->regenerate();
             return redirect()->route('admin.dashboard');
         }

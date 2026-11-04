@@ -17,11 +17,11 @@ Route::get('/', function () {
 })->name('inicio');
 
 Route::get('/iniciarsesion', function () {
-    return view('iniciarsesion');
+    return redirect()->route('login.student');
 })->name('iniciarsesion');
 
 Route::get('/registro', function () {
-    return view('registro');
+    return redirect()->route('register.student');
 })->name('registro');
 
 Route::get('/contactanos', function () {

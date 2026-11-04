@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\RateLimiter;
 
 class AdminAuthController extends Controller
 {
@@ -22,6 +23,12 @@ class AdminAuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             Log::info('Admin login successful', ['user_id' => Auth::id()]);
+
+            // Limpiar intentos acumulados tras login exitoso
+            $email = strtolower(trim((string) $request->input('email', '')));
+            $key = $email !== '' ? ($email . '|' . $request->ip()) : $request->ip();
+            RateLimiter::clear(md5('auth' . $key));
+            RateLimiter::clear('auth:' . $key);
 
             $request->session()->regenerate();
 

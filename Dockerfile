@@ -34,11 +34,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copiar Composer desde la imagen oficial
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Configurar Apache: apuntar DocumentRoot a la carpeta public y activar mod_rewrite
+# Configurar Apache: apuntar DocumentRoot a la carpeta public y activar mod_rewrite y mod_remoteip
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \
     && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf \
-    && a2enmod rewrite
+    && a2enmod rewrite remoteip \
+    && echo "RemoteIPHeader X-Forwarded-For\nRemoteIPTrustedProxy 10.0.0.0/8\nRemoteIPTrustedProxy 172.16.0.0/12\nRemoteIPTrustedProxy 192.168.0.0/16" > /etc/apache2/conf-available/remoteip.conf \
+    && a2enconf remoteip
 
 # Ajustar AllowOverride para que funcione el .htaccess de Laravel
 RUN echo '<Directory /var/www/html/public>\n\
