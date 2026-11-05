@@ -55,6 +55,21 @@
                     @endif
                 </div>
 
+                <!-- Módulo de Acción Rápida: Añadir Evaluación -->
+                <div class="modulo-accion-evaluar">
+                    @auth('student')
+                        <button type="button" class="btn btn-primary btn-block btn-evaluar-destacado" data-toggle="modal" data-target="#addReviewModal" title="Evaluar a este profesor">
+                            <i class="fas fa-edit mr-1"></i> Añadir evaluación
+                        </button>
+                    @elseauth('web')
+                        <p class="text-muted font-italic text-center mb-0" style="font-size: 0.84em; padding: 4px 0;">Los administradores no pueden publicar evaluaciones.</p>
+                    @else
+                        <a href="{{ route('login.student') }}" class="btn btn-primary btn-block text-center btn-evaluar-destacado" title="Inicia sesión como estudiante para evaluar">
+                            <i class="fas fa-edit mr-1"></i> Añadir evaluación
+                        </a>
+                    @endauth
+                </div>
+
                 <!-- Desglose de Calificaciones -->
                 <div class="gp-rating-card">
                     <h3 class="gp-rating-title">
@@ -171,19 +186,6 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <!-- Botón Añadir Evaluación -->
-                <div class="botones" style="margin-bottom: 20px;">
-                    @auth('student')
-                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addReviewModal" title="Evaluar a este profesor">
-                            Añadir evaluación
-                        </button>
-                    @elseauth('web')
-                        <p class="text-muted font-italic text-center" style="font-size: 0.85em;">Los administradores no pueden publicar evaluaciones.</p>
-                    @else
-                        <a href="{{ route('login.student') }}" class="btn btn-primary btn-block text-center" title="Inicia sesión como estudiante para evaluar">Añadir evaluación</a>
-                    @endauth
                 </div>
             </div>
 

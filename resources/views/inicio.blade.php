@@ -32,5 +32,30 @@
             Encuentra y evalúa docentes de tu universidad de forma 100% anónima
         </p>
     </div>
+
+    <!-- Sección Informativa Académica: PLN y Anonimato -->
+    <section class="academic-info-section" aria-label="Información académica sobre PLN y Seguridad">
+        <div class="academic-info-grid">
+            <!-- Bloque 1: Procesamiento de Lenguaje Natural -->
+            <article class="academic-info-block">
+                <span class="academic-eyebrow">Inteligencia Artificial & PLN</span>
+                <h2 class="academic-title">Procesamiento de Lenguaje Natural en la evaluación docente</h2>
+                <p class="academic-text">
+                    Las opiniones estudiantiles son procesadas mediante modelos de Deep Learning (BERT) que identifican aspectos pedagógicos y el sentimiento de cada comentario de forma objetiva, transformando el texto en métricas claras que orientan la mejora académica continua.
+                </p>
+            </article>
+
+            <div class="academic-divider" aria-hidden="true"></div>
+
+            <!-- Bloque 2: Seguridad y Anonimato -->
+            <article class="academic-info-block">
+                <span class="academic-eyebrow">Ética & Privacidad Universitaria</span>
+                <h2 class="academic-title">Seguridad y anonimato garantizados para el estudiante</h2>
+                <p class="academic-text">
+                    Tu participación está resguardada bajo estrictos principios éticos de investigación universitaria. Toda evaluación se publica de manera anónima con un alias, asegurando que ningún docente ni tercero tenga acceso a tu nombre, código ni datos personales.
+                </p>
+            </article>
+        </div>
+    </section>
 </div>
 @endsection
