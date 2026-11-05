@@ -3,7 +3,7 @@
 @section('titulo', __('messages.profeopina'))
 
 @push('styles')
-    <link rel="stylesheet" href="/css/inicio.css">
+    <link rel="stylesheet" href="/css/inicio.css?v={{ file_exists(public_path('css/inicio.css')) ? filemtime(public_path('css/inicio.css')) : '2.0' }}">
 @endpush
 
 @section('content')

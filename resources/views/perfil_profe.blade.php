@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @push('styles')
-    <link rel="stylesheet" href="/css/perfil_profe.css">
+    <link rel="stylesheet" href="/css/perfil_profe.css?v={{ file_exists(public_path('css/perfil_profe.css')) ? filemtime(public_path('css/perfil_profe.css')) : '2.0' }}">
     <script src="/js/aniadir_resenia.js"></script>
     @auth('student')
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
